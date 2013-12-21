@@ -98,6 +98,16 @@ th
 	filter: alpha(opacity=80);
 }
 
+.strategy-ally
+{
+	float: right;
+}
+
+.strategy-enemy
+{
+	float: left;
+}
+
 .strategy-ally:hover
 {
 	background-color: black;
