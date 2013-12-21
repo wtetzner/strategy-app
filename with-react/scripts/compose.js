@@ -13,4 +13,6 @@
     <CommentBox />,
     document.getElementById('content')
   );
+
+  d3.select("body").append("p").text("New paragraph!");
 })();
