@@ -1,0 +1,288 @@
+th
+{
+	color: black;
+	font-family: Arial Narrow;
+	font-size: 25px;
+}
+
+.champion-filter-button
+{
+	width: 35px;
+	height: 35px;
+	background-size: 35px 35px;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+.open
+{
+	background-image: url('../content/Open Button.fw.png');
+}
+
+.open:hover
+{
+	background-image: url('../content/Hover Open Button.fw.png');
+}
+
+.open-selected
+{
+	background-image: url('../content/Select Open Button.fw.png');
+}
+
+.recommended
+{
+	background-image: url('../content/Recc Button.fw.png');
+}
+
+.recommended:hover
+{
+	background-image: url('../content/Hover Recc Button.fw.png');
+}
+
+.recommended-selected
+{
+	background-image: url('../content/Select Recc Button.fw.png');
+}
+
+.counter
+{
+	background-image: url('../content/Counter Button.fw.png');
+}
+
+.counter:hover
+{
+	background-image: url('../content/Hover Counter Button.fw.png');
+}
+
+.counter-selected
+{
+	background-image: url('../content/Select Counter Button.fw.png');
+}
+
+.strategies
+{
+	width: 274px;
+}
+
+.strategies:nth-child(2)
+{
+	float: left;
+}
+
+.strategies:nth-child(3)
+{
+	float: right;
+}
+
+.strategy-box
+{
+	border: 2px solid white;
+	width: 250px;
+	height: 50px;
+	margin: 10px;
+	color: white;
+	/*text-align: center;*/
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, .2);
+	vertical-align: middle;
+	font-family: Arial Narrow;
+	font-size: 20px;
+	padding-top: auto;
+	padding-bottom: auto;
+	line-height: 240%;
+	cursor: pointer;
+}
+
+.strategy-box:hover
+{
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+
+.strategy-ally:hover
+{
+	background-color: black;
+}
+
+.strategy-enemy:hover
+{
+	background-color: red;
+}
+
+.strategy-split-push
+{
+	background-color: #24402f;
+}
+
+.strategy-jungle-control
+{
+	background-color: #5ca47a;
+}
+
+.strategy-flex-strat
+{
+	background-color: #a9abae;
+}
+
+.strategy-wombo-combo
+{
+	background-color: #95b8ff;
+}
+
+.strategy-gank-master
+{
+	background-color: #52658c;
+}
+
+.strategy-snowball
+{
+	background-color: #252e40;
+}
+
+.text-middle
+{
+	margin-top: auto;
+	margin-bottom: auto;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.text-left
+{
+	text-align: left;
+}
+
+.text-right
+{
+	text-align: right;
+}
+
+.text-center
+{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}
+
+.champion-icon
+{
+	width: 60px;
+	cursor: pointer;
+	margin: 5px 5px 5px 5px;
+}
+
+.champion-icon:hover
+{
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+}
+
+.champion-icon-disabled
+{
+	opacity: 0.2;
+	filter: alpha(opacity=20);
+	cursor: default;
+}
+
+.position
+{
+	color: black;
+	vertical-align: middle;
+	font-family: Arial Narrow;
+	font-size: 25px;
+	padding-top: auto;
+	padding-bottom: auto;
+}
+
+.map
+{
+	width: 375px;
+	height: 375px;
+	background-image: url('../content/summoners-rift.png');
+	background-size: 375px 375px;
+	background-repeat: no-repeat;
+	position: relative;
+}
+
+.composition-information
+{
+	width: 250px;
+	height: 100px;
+	position: absolute;
+	top: 25px;
+	left: 110px;
+	color: white;
+	text-align: center;
+	text-shadow: -1px -1px 0 rgba(0, 0, 0, .2);
+	vertical-align: middle;
+	font-family: Arial Narrow;
+	font-size: 35px;
+	padding-top: auto;
+	padding-bottom: auto;
+}
+
+.manual
+{
+	height: 375px;
+	border: 1px solid black;
+}
+
+.champion-search
+{
+	width: 100px;
+	border: 1px solid black;
+}
+
+.ui-autocomplete
+{
+	min-width: 200px;
+	max-height: 200px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.selected-champion
+{
+	width: 60px;
+	height: 60px;
+	border: 1px solid black;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.padded
+{
+	padding: 5px;
+}
+
+.champion-cell
+{
+	/*background-color: #f5f5f5;*/
+	font-family: Arial Narrow;
+}
+
+.ally
+{
+	background-color: #8cb8f4;
+}
+
+.enemy
+{
+	background-color: #be8df5;
+}
+
+.messages
+{
+	display: none;
+}
+
+body
+{
+	background-image: url('../content/App Logo.fw.png');
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+
+#content
+{
+	margin: auto;
+}

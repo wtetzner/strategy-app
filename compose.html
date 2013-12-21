@@ -1,0 +1,250 @@
+<html>
+    <head>
+        <title>LoL Strategy Framework</title>
+		
+		<link href="scripts/libraries/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
+		<link href="scripts/libraries/jquery-tooltip/jquery.tooltip.css" rel="stylesheet" type="text/css" />
+		<link href="styles/carousel.css" rel="stylesheet" type="text/css" />
+		<link href="styles/compose.css" rel="stylesheet" type="text/css" />
+
+        <script type="text/javascript" src="scripts/libraries/jquery/jquery-1.10.2.min.js"></script>
+        <script type="text/javascript" src="scripts/libraries/jquery-ui/ui/jquery-ui.js"></script>
+        <script type="text/javascript" src="scripts/libraries/modernizr/modernizr.js"></script>
+        <script type="text/javascript" src="scripts/libraries/jquery-hammer/jquery.hammer.js"></script>
+        <script type="text/javascript" src="scripts/libraries/jquery-migrate/jquery-migrate-1.2.1.js"></script>
+        <script type="text/javascript" src="scripts/libraries/jquery-tooltip/jquery.tooltip.js"></script>
+        <script type="text/javascript" src="scripts/champion-data.js"></script>
+        <script type="text/javascript" src="scripts/role-data.js"></script>
+        <script type="text/javascript" src="scripts/strategy-data.js"></script>
+        <script type="text/javascript" src="scripts/carousel.js"></script>
+        <script type="text/javascript" src="scripts/compose.js"></script>
+    </head>
+    <body>
+		<table id="content">
+			<tr>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<td>
+					<table>
+						<tr>
+							<td><div class="champion-filter-button open-selected" filter="open" title="Free picks" /></td>
+							<td><div class="champion-filter-button recommended" filter="recommended" title="Strategy recommendations" /></td>
+							<td><div class="champion-filter-button counter" filter="counter" title="Lane counters" /></td>
+						</tr>
+					</table>
+				</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<td class="champions-all">
+					<table class="manual">
+						<tr>
+							<td class="text-middle text-center padded champion-cell ally">
+								<b>Top</b>
+								<br />
+								<img class="selected-champion" />
+								<br />
+								<input type="text" class="champion-search search-ally top" position="top" />
+							</td>
+						</tr>
+						<tr>
+							<td class="text-middle text-center padded champion-cell ally">
+								<b>Jungle</b>
+								<br />
+								<img class="selected-champion" />
+								<br />
+								<input type="text" class="champion-search search-ally jungle" position="jungle" />
+							</td>
+						</tr>
+						<tr>
+							<td class="text-middle text-center padded champion-cell ally">
+								<b>Mid</b>
+								<br />
+								<img class="selected-champion" />
+								<br />
+								<input type="text" class="champion-search search-ally mid" position="mid" />
+							</td>
+						</tr>
+						<tr>
+							<td class="text-middle text-center padded champion-cell ally">
+								<b>Carry</b>
+								<br />
+								<img class="selected-champion" />
+								<br />
+								<input type="text" class="champion-search search-ally carry" position="carry" />
+							</td>
+						</tr>
+						<tr>
+							<td class="text-middle text-center padded champion-cell ally">
+								<b>Support</b>
+								<br />
+								<img class="selected-champion" />
+								<br />
+								<input type="text" class="champion-search search-ally support" position="support" />
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td class="strategies">
+					<div class="strategy-box strategy-split-push strategy-ally" strategy="oo">
+						<div style="width: 80%; float: left" class="text-middle text-left strategy-name">&nbsp;Split Push</div>
+						<div style="width: 20%; float: left" class="text-middle text-right strategy-score">0%&nbsp;</div>
+					</div>
+					<div class="strategy-box strategy-jungle-control strategy-ally" strategy="os">
+						<div style="width: 80%; float: left" class="text-middle text-left strategy-name">&nbsp;Jungle Control</div>
+						<div style="width: 20%; float: left" class="text-middle text-right strategy-score">0%&nbsp;</div>
+					</div>
+					<div class="strategy-box strategy-flex-strat strategy-ally" strategy="ss">
+						<div style="width: 80%; float: left" class="text-middle text-left strategy-name">&nbsp;Flex Strat</div>
+						<div style="width: 20%; float: left" class="text-middle text-right strategy-score">0%&nbsp;</div>
+					</div>
+					<div class="strategy-box strategy-wombo-combo strategy-ally" strategy="sh">
+						<div style="width: 80%; float: left" class="text-middle text-left strategy-name">&nbsp;Wombo Combo</div>
+						<div style="width: 20%; float: left" class="text-middle text-right strategy-score">0%&nbsp;</div>
+					</div>
+					<div class="strategy-box strategy-gank-master strategy-ally" strategy="ho">
+						<div style="width: 80%; float: left" class="text-middle text-left strategy-name">&nbsp;Gank Master</div>
+						<div style="width: 20%; float: left" class="text-middle text-right strategy-score">0%&nbsp;</div>
+					</div>
+					<div class="strategy-box strategy-snowball strategy-ally" strategy="hh">
+						<div style="width: 80%; float: left" class="text-middle text-left strategy-name">&nbsp;Snowball</div>
+						<div style="width: 20%; float: left" class="text-middle text-right strategy-score">0%&nbsp;</div>
+					</div>
+				</td>
+				<td class="strategies">
+					<div class="strategy-box strategy-split-push strategy-enemy" strategy="oo">
+						<div style="width: 20%; float: left" class="text-middle text-left strategy-score">&nbsp;0%</div>
+						<div style="width: 80%; float: left" class="text-middle text-right strategy-name">Split Push&nbsp;</div>
+					</div>
+					<div class="strategy-box strategy-jungle-control strategy-enemy" strategy="os">
+						<div style="width: 20%; float: left" class="text-middle text-left strategy-score">&nbsp;0%</div>
+						<div style="width: 80%; float: left" class="text-middle text-right strategy-name">Jungle Control&nbsp;</div>
+					</div>
+					<div class="strategy-box strategy-flex-strat strategy-enemy" strategy="ss">
+						<div style="width: 20%; float: left" class="text-middle text-left strategy-score">&nbsp;0%</div>
+						<div style="width: 80%; float: left" class="text-middle text-right strategy-name">Flex Strat&nbsp;</div>
+					</div>
+					<div class="strategy-box strategy-wombo-combo strategy-enemy" strategy="sh">
+						<div style="width: 20%; float: left" class="text-middle text-left strategy-score">&nbsp;0%</div>
+						<div style="width: 80%; float: left" class="text-middle text-right strategy-name">Wombo Combo&nbsp;</div>
+					</div>
+					<div class="strategy-box strategy-gank-master strategy-enemy" strategy="ho">
+						<div style="width: 20%; float: left" class="text-middle text-left strategy-score">&nbsp;0%</div>
+						<div style="width: 80%; float: left" class="text-middle text-right strategy-name">Gank Master&nbsp;</div>
+					</div>
+					<div class="strategy-box strategy-snowball strategy-enemy" strategy="hh">
+						<div style="width: 20%; float: left" class="text-middle text-left strategy-score">&nbsp;0%</div>
+						<div style="width: 80%; float: left" class="text-middle text-right strategy-name">Snowball&nbsp;</div>
+					</div>
+				</td>
+				<td class="champions-all">
+					<table class="manual">
+						<tr>
+							<td class="text-middle text-center padded champion-cell enemy">
+								<b>Top</b>
+								<br />
+								<img class="selected-champion" />
+								<br />
+								<input type="text" class="champion-search search-enemy top" position="top" />
+							</td>
+						</tr>
+						<tr>
+							<td class="text-middle text-center padded champion-cell enemy">
+								<b>Jungle</b>
+								<br />
+								<img class="selected-champion" />
+								<br />
+								<input type="text" class="champion-search search-enemy jungle" position="jungle" />
+							</td>
+						</tr>
+						<tr>
+							<td class="text-middle text-center padded champion-cell enemy">
+								<b>Mid</b>
+								<br />
+								<img class="selected-champion" />
+								<br />
+								<input type="text" class="champion-search search-enemy mid" position="mid" />
+							</td>
+						</tr>
+						<tr>
+							<td class="text-middle text-center padded champion-cell enemy">
+								<b>Carry</b>
+								<br />
+								<img class="selected-champion" />
+								<br />
+								<input type="text" class="champion-search search-enemy carry" position="carry" />
+							</td>
+						</tr>
+						<tr>
+							<td class="text-middle text-center padded champion-cell enemy">
+								<b>Support</b>
+								<br />
+								<img class="selected-champion" />
+								<br />
+								<input type="text" class="champion-search search-enemy support" position="support" />
+							</td>
+						</tr>
+					</table>
+				</td>
+				<td class="positions" style="display: none">
+					<div class="map">
+						<div class="composition-information">Champion Synergy<br />0%</div>
+					</div>
+				</td>
+				<td class="champions-recommended" style="display: none">
+					<div class="selection">
+						<table>
+							<tr class='champion-row'>
+								<td class='all-champions'>
+									<div style='width: 350px; height: 70px; border: 1px solid #999999' class='carousel'></div>
+								</td>
+								<td class='position'>top</td>
+								<td class='selected-champion'></td>
+							</tr>
+							<tr class='champion-row'>
+								<td class='all-champions'>
+									<div style='width: 350px; height: 70px; border: 1px solid #999999' class='carousel'></div>
+								</td>
+								<td class='position'>jungle</td>
+								<td class='selected-champion'></td>
+							</tr>
+							<tr class='champion-row'>
+								<td class='all-champions'>
+									<div style='width: 350px; height: 70px; border: 1px solid #999999' class='carousel'></div>
+								</td>
+								<td class='position'>mid</td>
+								<td class='selected-champion'></td>
+							</tr>
+							<tr class='champion-row'>
+								<td class='all-champions'>
+									<div style='width: 350px; height: 70px; border: 1px solid #999999' class='carousel'></div>
+								</td>
+								<td class='position'>support</td>
+								<td class='selected-champion'></td>
+							</tr>
+							<tr class='champion-row'>
+								<td class='all-champions'>
+									<div style='width: 350px; height: 70px; border: 1px solid #999999' class='carousel'></div>
+								</td>
+								<td class='position'>carry</td>
+								<td class='selected-champion'></td>
+							</tr>
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<div class="messages"></div>
+		<!-- <canvas id="strategy-canvas" width="500" height="500" style="width: 500px; height: 500px; border: 1px solid black"></canvas> -->
+    </body>
+</html>
