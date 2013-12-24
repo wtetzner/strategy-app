@@ -2,13 +2,34 @@
   <head>
     <title>LoL Strategy Framework</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <script src="http://fb.me/react-0.8.0.js"></script>
-    <script src="http://fb.me/JSXTransformer-0.8.0.js"></script>
     <script type="text/javascript" src="scripts/libraries/d3.v3.min.js"></script>
-    <script type="text/jsx" src="scripts/compose.js"></script>
+    <script type="text/javascript" src="data/champion-data.js"></script>
+    <link href="styles/compose.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="scripts/state.js"></script>
+    <script type="text/javascript" src="scripts/compose.js"></script>
   </head>
   <body>
-    <div id="content">
+    <div id="content" style="display: none;">
+      <div id="toolbar"></div>
+      <div>
+        <div id="left-champions" class="champions"></div>
+        <div id="strategy-box">
+          <div id="enemy-strategies">enemy</div>
+          <div id="ally-strategies">ally</div>
+        </div>
+        <div id="right-champions" class="champions"></div>
+      </div>
+    </div>
+    <div id="svg-content">
+      <svg id="svg" width="1280" height="720">
+        <image width="100" height="100" xlink:href="http://images1.wikia.nocookie.net/__cb20100509144937/leagueoflegends/images/a/a5/AkaliSquare.png" />
+        <image width="535" height="523" y="300" xlink:href="http://upload.wikimedia.org/wikipedia/en/2/22/Heckert_GNU_white.svg" />
+        <foreignObject x="0" y="150" width="155" height="20">
+          <input type="text" value="some-text" style="height:20;"></input>
+        </foreignObject>
+        <rect x="150" width="250" height="120" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+        <!-- <circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" /> -->
+      </svg>
     </div>
   </body>
 </html>

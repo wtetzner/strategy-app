@@ -114,5 +114,5 @@ var champions = [
     { name: "Zed", role1: "C", role2: "A", oo: 2, os: 5, ss: 5, sh: 3, ho: 5, hh: 4, image: "http://images4.wikia.nocookie.net/__cb20121102025351/leagueoflegends/images/b/bb/ZedSquare.png", counters: [ "Kayle", "Wukong", "Irelia", "Lissandra", "Diana" ] },
     { name: "Ziggs", role1: "A", role2: "", oo: 2, os: 3, ss: 3, sh: 5, ho: 4, hh: 4, image: "http://images1.wikia.nocookie.net/__cb20120201131556/leagueoflegends/images/5/55/ZiggsSquare.png", counters: [ "LeBlanc", "Fizz", "Kassadin", "Diana", "Ahri" ] },
     { name: "Zilean", role1: "D", role2: "", oo: 1, os: 3, ss: 3, sh: 2, ho: 2, hh: 3, image: "http://images2.wikia.nocookie.net/__cb20091218195804/leagueoflegends/images/a/ac/ZileanSquare.png", counters: [ "Morgana", "Karma", "Soraka", "Cho'Gath", "Galio" ] },
-    { name: "Zyra", role1: "D", role2: "C", oo: 3, os: 4, ss: 3, sh: 5, ho: 4, hh: 4, image: "http://images2.wikia.nocookie.net/__cb20121111132958/leagueoflegends/images/1/1a/ZyraSquare.png", counters: [ "Fizz", "Katarina", "Blitzcrank", "Leona", "Soraka" ] } 
+    { name: "Zyra", role1: "D", role2: "C", oo: 3, os: 4, ss: 3, sh: 5, ho: 4, hh: 4, image: "http://images2.wikia.nocookie.net/__cb20121111132958/leagueoflegends/images/1/1a/ZyraSquare.png", counters: [ "Fizz", "Katarina", "Blitzcrank", "Leona", "Soraka" ] }
 ];
