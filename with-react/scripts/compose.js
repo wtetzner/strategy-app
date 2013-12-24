@@ -83,8 +83,7 @@ window.renderer = (function () {
   function render(data) {
     renderChampions(d3.select("#left-champions"), "ally", data.allies);
     renderChampions(d3.select("#right-champions"), "enemy", data.enemies);
-
-    // d3.select('#svg-content').selectAll
+    // d3.select('#svg-content').
   }
 
   function renderChampionsOld(champions) {
@@ -107,9 +106,9 @@ window.renderer = (function () {
   }
 
   window.onload = function () {
-    buildChampions(d3.select("#left-champions"), "ally", state.current.allies);
-    buildChampions(d3.select("#right-champions"), "enemy", state.current.enemies);
-    render(state.current);
+    // buildChampions(d3.select("#left-champions"), "ally", state.current.allies);
+    // buildChampions(d3.select("#right-champions"), "enemy", state.current.enemies);
+    // render(state.current);
   };
 
   this.selectAllyChampion = function (kind, championName) {

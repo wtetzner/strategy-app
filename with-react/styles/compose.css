@@ -1,4 +1,8 @@
 
+body {
+   background-color: #BBBBBB;
+}
+
 #left-champions {
    float: left
 }
@@ -33,4 +37,6 @@
    width: 100%;
    height: 100%;
 }
+
+
 
