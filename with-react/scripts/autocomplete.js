@@ -7,10 +7,12 @@ var autocomplete = (function () {
   this.make = function(render) {
     return {
       source: function (request, response) {
+        var kind = ($(this).hasClass('ally-select')) ? 'ally' : 'enemy';
         response(
           state.champions
             .filter(function (champion) {
-              return !state.isAlly(champion.name) && contains(champion.name.toLowerCase(), request.term.toLowerCase());
+              var exists = (kind === 'ally') ? state.isAlly(champion.name) : state.isEnemy(champion.name);
+              return !exists && contains(champion.name.toLowerCase(), request.term.toLowerCase());
             }));
       },
       select: function (event, ui) {

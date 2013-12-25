@@ -71,7 +71,7 @@ var state = (function () {
   this.isEnemy = function (championName) {
     var name = championName.toLowerCase();
     for (var i = 0; i < this.current.enemies.length; i++) {
-      var ally = this.current.enemies[i];
+      var enemy = this.current.enemies[i];
       if (!enemy.data.empty && enemy.data.name.toLowerCase() === name) {
         return true;
       }
