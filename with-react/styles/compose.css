@@ -38,5 +38,19 @@ body {
    height: 100%;
 }
 
+.champion-select {
+   padding-right: 1px;
+   width: 100px;
+   height: 25px;
+   background-color: transparent;
+   color: white;
+   border: 0px;
+}
 
+.ally-select {
+}
+
+.enemy-select {
+   text-align: right;
+}
 

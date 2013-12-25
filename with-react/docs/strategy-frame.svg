@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="no"?>
+<!-- Generator: Adobe Fireworks 10, Export SVG Extension by Aaron Beall (http://fireworks.abeall.com) . Version: 0.6.1  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg id="strategy%20frame.fw-Page%201" viewBox="0 0 750 400" style="background-color:#ffffff00" version="1.1"
+	xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+	x="0px" y="0px" width="750px" height="400px"
+>
+	<defs>
+		<linearGradient id="gradient1" x1="38.6667%" y1="59%" x2="64.662%" y2="58.5358%">
+			<stop stop-color="#52658c" stop-opacity="0.6" offset="0%"/>
+			<stop stop-color="#555555" stop-opacity="0.6" offset="47.7778%"/>
+			<stop stop-color="#69338c" stop-opacity="0.6" offset="100%"/>
+		</linearGradient>
+		<linearGradient id="gradient2" x1="28.3333%" y1="0%" x2="28.3333%" y2="100%">
+			<stop stop-color="#000000" stop-opacity="0.8" offset="0%"/>
+			<stop stop-color="#555555" stop-opacity="0.8" offset="100%"/>
+		</linearGradient>
+		<linearGradient id="gradient3" x1="28.3333%" y1="0%" x2="28.3333%" y2="100%">
+			<stop stop-color="#000000" stop-opacity="0.8" offset="0%"/>
+			<stop stop-color="#555555" stop-opacity="0.8" offset="100%"/>
+		</linearGradient>
+	</defs>
+	<g id="Layer%201">
+		<rect x="0" y="0" width="750" height="400" stroke="#252e40" stroke-width="4" fill="url(#gradient1)" rx="10" ry="10"/>
+		<rect x="67" y="328" width="300" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient2)"/>
+		<rect x="383" y="328" width="300" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient3)"/>
+	</g>
+</svg>

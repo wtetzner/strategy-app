@@ -87,11 +87,19 @@ window.renderer = (function () {
         // alert('champion: ' + JSON.stringify(champion, undefined, 2));
         return champion.data.image;
       });
-    d3.selectAll("." + kind + "-select").data(champions)
+    var select_input = "." + kind + "-select";
+    d3.selectAll(select_input).data(champions)
       .transition()
       .attr("value", function(champion) {
         return champion.data.name;
       });
+
+    $(select_input).each(function () {
+      var name = this.getAttribute('value');
+      if (name !== "") {
+        $(this).val(name);
+      }
+    });
   }
 
   function render() {
