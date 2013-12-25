@@ -18,18 +18,18 @@ var state = (function () {
   this.empty = {
     mode: modes[1],
     allies: [
-      { data: null, kind: "Top" },
-      { data: null, kind: "Jungle" },
-      { data: null, kind: "Mid" },
-      { data: null, kind: "Carry" },
-      { data: null, kind: "Support" }
+      { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Top" },
+      { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Jungle" },
+      { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Mid" },
+      { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Carry" },
+      { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Support" }
     ],
     enemies: [
-      { data: null, kind: "Top" },
-      { data: null, kind: "Jungle" },
-      { data: null, kind: "Mid" },
-      { data: null, kind: "Carry" },
-      { data: null, kind: "Support" }
+      { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Top" },
+      { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Jungle" },
+      { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Mid" },
+      { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Carry" },
+      { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Support" }
     ],
     strategies: {
       "split-push":     { name: "Split Push" },
@@ -56,6 +56,28 @@ var state = (function () {
     }
     return null;
   }
+
+  this.isAlly = function (championName) {
+    var name = championName.toLowerCase();
+    for (var i = 0; i < this.current.allies.length; i++) {
+      var ally = this.current.allies[i];
+      if (!ally.data.empty && ally.data.name.toLowerCase() === name) {
+        return true;
+      }
+    }
+    return false;
+  };
+
+  this.isEnemy = function (championName) {
+    var name = championName.toLowerCase();
+    for (var i = 0; i < this.current.enemies.length; i++) {
+      var ally = this.current.enemies[i];
+      if (!enemy.data.empty && enemy.data.name.toLowerCase() === name) {
+        return true;
+      }
+    }
+    return false;
+  };
 
   this.selectAllyChampionByName = function(data, kind, championName) {
     var champion = findChampion(championName);

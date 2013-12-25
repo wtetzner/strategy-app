@@ -80,9 +80,26 @@ window.renderer = (function () {
       });
   }
 
-  function render(data) {
-    renderChampions(d3.select("#left-champions"), "ally", data.allies);
-    renderChampions(d3.select("#right-champions"), "enemy", data.enemies);
+  function renderChampionFrames(kind, champions) {
+    d3.selectAll("." + kind + "-image").data(champions)
+      .transition()
+      .attr("xlink:href", function(champion) {
+        // alert('champion: ' + JSON.stringify(champion, undefined, 2));
+        return champion.data.image;
+      });
+    d3.selectAll("." + kind + "-select").data(champions)
+      .transition()
+      .attr("value", function(champion) {
+        return champion.data.name;
+      });
+  }
+
+  function render() {
+    // alert(JSON.stringify(state.current, undefined, 2));
+    renderChampionFrames('ally', state.current.allies);
+    renderChampionFrames('enemy', state.current.enemies);
+    // renderChampions(d3.select("#left-champions"), "ally", data.allies);
+    // renderChampions(d3.select("#right-champions"), "enemy", data.enemies);
     // d3.select('#svg-content').
   }
 
@@ -106,6 +123,35 @@ window.renderer = (function () {
   }
 
   window.onload = function () {
+    // renderChampionFrames(state.current.allies);
+    window.setTimeout(function () {
+      state.selectAllyChampionByName(state.current, 'Top', "Amumu");
+      renderChampionFrames('ally', state.current.allies);
+      // alert('allies: ' + JSON.stringify(state.current.allies, undefined, 2));
+    }, 1000);
+    $(".champion-select").autocomplete(autocomplete.make(render)).focus(function () {
+    $(this).autocomplete("search");
+  });
+
+    $(".champion-select").each(function() {
+      $(this).data( "ui-autocomplete" )._renderItem = function(ul, item) {
+        return $("<li>")
+          .append(" \
+            <a> \
+              <table> \
+                <tr> \
+                  <td> \
+                    <img style='height: 30px' src='" + item.image + "' /> \
+                  </td> \
+                  <td> \
+                    " + item.name + " \
+                  </td> \
+                </tr> \
+              </table> \
+            </a>")
+          .appendTo(ul);
+      };
+    });
     // buildChampions(d3.select("#left-champions"), "ally", state.current.allies);
     // buildChampions(d3.select("#right-champions"), "enemy", state.current.enemies);
     // render(state.current);

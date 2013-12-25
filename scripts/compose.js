@@ -164,7 +164,7 @@ function constructChampionSearchBoxes () {
   $(".champion-search").autocomplete({
     source: function(request, response) {
       var championNameExpression = new RegExp(".*" + request.term + ".*", "i"),
-        $elementAlly = this.element
+          $elementAlly = this.element,
         $elementEnemy = $("input.search-enemy." + $elementAlly.attr("position")),
         enemyChampions = champions.filter(function(champion) { return champion.name == $elementEnemy.val(); });
 
