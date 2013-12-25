@@ -1,6 +1,11 @@
 
 window.renderer = (function () {
 
+  state.champions.map(function (champion) {
+    var img = new Image();
+    img.src = champion.image;
+  });
+
   function buildChampions(box, kind, champions) {
     var boxes = box.selectAll('div').data(champions);
     var divs = boxes.enter().append('div');
@@ -132,11 +137,11 @@ window.renderer = (function () {
 
   window.onload = function () {
     // renderChampionFrames(state.current.allies);
-    window.setTimeout(function () {
-      state.selectAllyChampionByName(state.current, 'Top', "Amumu");
-      renderChampionFrames('ally', state.current.allies);
-      // alert('allies: ' + JSON.stringify(state.current.allies, undefined, 2));
-    }, 1000);
+    // window.setTimeout(function () {
+    //   state.selectAllyChampionByName(state.current, 'Top', "Amumu");
+    //   renderChampionFrames('ally', state.current.allies);
+    //   // alert('allies: ' + JSON.stringify(state.current.allies, undefined, 2));
+    // }, 1000);
     $(".champion-select").autocomplete(autocomplete.make(render)).focus(function () {
     $(this).autocomplete("search");
   });

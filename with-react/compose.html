@@ -13,6 +13,9 @@
     <script type="text/javascript" src="scripts/compose.js"></script>
   </head>
   <body>
+    <form>
+      <input type="text" value="text" />
+    </form>
     <!-- <div id="content" style="display: none;"> -->
     <!--   <div id="toolbar"></div> -->
     <!--   <div> -->
@@ -239,7 +242,7 @@
           <image class="enemy-image" x="1208" y="74" width="64" height="64" xlink:href="images/unknown.png" />
           <rect class="enemy-image-frame" x="1208" y="74" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient2)"/>
           <rect x="1172" y="142" width="100" height="25" stroke="#301740" stroke-width="2" fill="url(#gradient3)"/>
-          <foreignObject x="1172" y="142" width="100" height="25" transform="translate(0,0)">
+          <foreignObject x="1172" y="142" width="100" height="25" transform="translate(0,0)" style="pointer-events: all;" overflow="hidden" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
             <body xmlns="http://www.w3.org/1999/xhtml">
               <form>
                 <input class="champion-select enemy-select top-select" type="text" value="" />

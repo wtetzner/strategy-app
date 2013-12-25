@@ -6,6 +6,7 @@ var autocomplete = (function () {
 
   this.make = function(render) {
     return {
+      minLength: 1,
       source: function (request, response) {
         var kind = ($(this).hasClass('ally-select')) ? 'ally' : 'enemy';
         response(
