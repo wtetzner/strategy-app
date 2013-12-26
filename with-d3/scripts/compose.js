@@ -30,12 +30,14 @@ window.renderer = (function () {
   };
 
   this.openSelection = function (kind, position) {
-    state.current.appState = {
-      id: "select-champion",
-      kind: kind,
-      position: position
-    };
-    render(state);
+    if (state.current.appState.id !== "select-champion") {
+      state.current.appState = {
+        id: "select-champion",
+        kind: kind,
+        position: position
+      };
+      render(state);
+    }
   };
 
   function renderChampionSelection(state) {
