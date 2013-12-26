@@ -40,25 +40,28 @@ window.renderer = (function () {
     }
   };
 
+  function prepareChampionSelectionBox(state) {
+    var rect = document.getElementById('champion-select-rect');
+    var rectX = rect.getAttribute("x") | 0; //$('#champion-select-rect').attr('x') | 0;
+    var rectY = rect.getAttribute("y") | 0; //8; //$('#champion-select-rect').attr('y') | 0;
+
+    d3.select("#champion-select-frame").selectAll("image")
+      .data(state.champions)
+      .enter()
+      .append("image")
+      .attr("x", function (champion, i) { return rectX + ((i % 11) * 64); })
+      .attr("y", function (champion, i) { return rectY + ((i / 11 | 0) * 64); })
+      .attr("width", 64)
+      .attr("height", 64)
+      .attr("xlink:href", function (champion) { return champion.image; })
+      .on("click", function (champion) {
+        selectChampion(state.current.appState.kind, state.current.appState.position, champion.name);
+      });
+  }
+
   function renderChampionSelection(state) {
     if (state.current.appState.id === "select-champion") {
       $("#champion-select-frame").css("display", "block");
-      var rect = document.getElementById('champion-select-rect');
-      var rectX = rect.getAttribute("x") | 0; //$('#champion-select-rect').attr('x') | 0;
-      var rectY = rect.getAttribute("y") | 0; //8; //$('#champion-select-rect').attr('y') | 0;
-
-      d3.select("#champion-select-frame").selectAll("image")
-        .data(state.champions)
-        .enter()
-        .append("image")
-        .attr("x", function (champion, i) { return rectX + ((i % 11) * 64); })
-        .attr("y", function (champion, i) { return rectY + ((i / 11 | 0) * 64); })
-        .attr("width", 64)
-        .attr("height", 64)
-        .attr("xlink:href", function (champion) { return champion.image; })
-        .on("click", function (champion) {
-          selectChampion(state.current.appState.kind, state.current.appState.position, champion.name);
-        });
     } else {
       $("#champion-select-frame").css("display", "none");
     }
@@ -71,21 +74,12 @@ window.renderer = (function () {
   }
 
   window.onload = function () {
+    prepareChampionSelectionBox(state);
+    // state.champions.map(function (champion) {
+    //   var image = new Image();
+    //   image.src = champion.image;
+    // });
     render(state);
-  };
-
-  this.selectAllyChampion = function (kind, championName) {
-    state.selectAllyChampionByName(state.current, kind, championName);
-    this.update();
-  };
-
-  this.selectEnemyChampion = function (kind, championName) {
-    state.selectEnemyChampionByName(state.current, kind, championName);
-    this.update();
-  };
-
-  this.update = function () {
-    render(state.current);
   };
 
   return this;
