@@ -4,11 +4,26 @@ var autocomplete = (function () {
     return big.indexOf(small) !== -1;
   }
 
-  this.make = function(render) {
+  this.position = function (input) {
+    var championPosition;
+    // if ($(input).hasClass('top-select')) {
+    //   championPosition = 'Top';
+    // } else if ($(input).hasClass('jungle-select')) {
+    //   championPosition = 'Jungle';
+    // } else if ($(input).hasClass('mid-select')) {
+    //   championPosition = 'Mid';
+    // } else if ($(input).hasClass('carry-select')) {
+    //   championPosition = 'Carry';
+    // } else if ($(input).hasClass('support-select')) {
+    //   championPosition = 'Support';
+    // }
+    return championPosition;
+  };
+
+  this.make = function(kind, render) {
     return {
       minLength: 1,
       source: function (request, response) {
-        var kind = ($(this).hasClass('ally-select')) ? 'ally' : 'enemy';
         response(
           state.champions
             .filter(function (champion) {
@@ -17,28 +32,15 @@ var autocomplete = (function () {
             }));
       },
       select: function (event, ui) {
-        // alert(ui.item.name);
-        var championPosition = 'Top';
-        if ($(this).hasClass('top-select')) {
-          championPosition = 'Top';
-        } else if ($(this).hasClass('jungle-select')) {
-          championPosition = 'Jungle';
-        } else if ($(this).hasClass('mid-select')) {
-          championPosition = 'Mid';
-        } else if ($(this).hasClass('carry-select')) {
-          championPosition = 'Carry';
-        } else if ($(this).hasClass('support-select')) {
-          championPosition = 'Support';
-        }
+        var championPosition = position(this);
         var kind = ($(this).hasClass('ally-select')) ? 'ally' : 'enemy';
         if (kind === 'ally') {
           state.selectAllyChampionByName(state.current, championPosition, ui.item.name);
         } else {
           state.selectEnemyChampionByName(state.current, championPosition, ui.item.name);
         }
+        render(state);
         $(this).val(ui.item.name);
-        render();
-        // window.setTimeout(function () { render(); }, 1);
         return false;
       }
     };

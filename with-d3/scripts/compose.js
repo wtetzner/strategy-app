@@ -6,168 +6,70 @@ window.renderer = (function () {
     img.src = champion.image;
   });
 
-  function buildChampions(box, kind, champions) {
-    var boxes = box.selectAll('div').data(champions);
-    var divs = boxes.enter().append('div');
-
-    function imageSrc(champion) {
-      if (champion.data) {
-        return champion.data.image;
-      } else {
-        return "";
-      }
-    }
-
-    function championName(champion) {
-      var data = champion.data || { name: "" };
-      return data.name;
-    }
-
-    divs.append("h3")
-      .text(function (champion) {
-        return champion.kind;
-      });
-
-    divs.append("img").attr("src", imageSrc);
-
-    function championId(champion) {
-      return kind.toLowerCase() + "-" + champion.kind.toLowerCase() + "-textbox";
-    }
-
-    divs.append("input")
-      .attr("id", championId)
-      .attr("type", "text")
-      .attr("value", championName)
-      .attr("onBlur", function (champion) {
-        if (kind.toLowerCase() === "ally") {
-          return "renderer.selectAllyChampion('" + champion.kind + "', this.value);";
-        } else {
-          return "renderer.selectEnemyChampion('" + champion.kind + "', this.value);";
-        }
-      });
-  }
-
-  function renderChampions(box, kind, champions) {
-    var boxes = box.selectAll('div').data(champions);
-
-    function imageSrc(champion) {
-      if (champion.data) {
-        return champion.data.image;
-      } else {
-        return "";
-      }
-    }
-
-    function championName(champion) {
-      var data = champion.data || { name: "" };
-      return data.name;
-    }
-
-    function championId(champion) {
-      return kind.toLowerCase() + "-" + champion.kind.toLowerCase() + "-textbox";
-    }
-
-    boxes.transition().selectAll("img")
-      .attr("class", "champion-image")
-      .attr("src", imageSrc);
-
-    boxes.transition().selectAll("input")
-      .attr("value", function (champion) {
-        return championName(champion);
-      })
-      .each(function (champion) {
-        if (championId(champion)) {
-          var input = document.getElementById(championId(champion));
-          if (input.getAttribute('value')) {
-            input.value = championName(champion);
-          }
-        }
-      });
-  }
-
   function renderChampionFrames(kind, champions) {
     d3.selectAll("." + kind + "-image").data(champions)
       .transition()
       .attr("xlink:href", function(champion) {
-        // alert('champion: ' + JSON.stringify(champion, undefined, 2));
         return champion.data.image;
       });
-    var select_input = "." + kind + "-select";
+    var select_input = "." + kind + "-champion-name";
     d3.selectAll(select_input).data(champions)
       .transition()
-      .attr("value", function(champion) {
+      .text(function(champion) {
         return champion.data.name;
       });
-
-    $(select_input).each(function () {
-      var name = this.getAttribute('value');
-      if (name !== "") {
-        $(this).val(name);
-      }
-    });
   }
 
-  function render() {
-    // alert(JSON.stringify(state.current, undefined, 2));
+  this.selectChampion = function (kind, position, name) {
+    if (kind === "ally") {
+      state.selectAllyChampionByName(state.current, position, name);
+    } else {
+      state.selectEnemyChampionByName(state.current, position, name);
+    }
+    render(state);
+  };
+
+  this.openSelection = function (kind, position) {
+    state.current.appState = {
+      id: "select-champion",
+      kind: kind,
+      position: position
+    };
+    render(state);
+  };
+
+  function renderChampionSelection(state) {
+    if (state.current.appState.id === "select-champion") {
+      $("#champion-select-frame").css("display", "block");
+      var rect = document.getElementById('champion-select-rect');
+      var rectX = rect.getAttribute("x") | 0; //$('#champion-select-rect').attr('x') | 0;
+      var rectY = rect.getAttribute("y") | 0; //8; //$('#champion-select-rect').attr('y') | 0;
+
+      d3.select("#champion-select-frame").selectAll("image")
+        .data(state.champions)
+        .enter()
+        .append("image")
+        .attr("x", function (champion, i) { return rectX + ((i % 11) * 64); })
+        .attr("y", function (champion, i) { return rectY + ((i / 11 | 0) * 64); })
+        .attr("width", 64)
+        .attr("height", 64)
+        .attr("xlink:href", function (champion) { return champion.image; })
+        .on("click", function (champion) {
+          selectChampion(state.current.appState.kind, state.current.appState.position, champion.name);
+        });
+    } else {
+      $("#champion-select-frame").css("display", "none");
+    }
+  }
+
+  function render(state) {
+    renderChampionSelection(state);
     renderChampionFrames('ally', state.current.allies);
     renderChampionFrames('enemy', state.current.enemies);
-    // renderChampions(d3.select("#left-champions"), "ally", data.allies);
-    // renderChampions(d3.select("#right-champions"), "enemy", data.enemies);
-    // d3.select('#svg-content').
-  }
-
-  function renderChampionsOld(champions) {
-    d3.select("body").select("#content")
-      .selectAll("div")
-      .data(champions)
-      .enter()
-      .append("div")
-      .attr("id", function (champion) {
-        return "champion-" + champion.name.toLowerCase();
-      })
-      .classed("champion", true)
-      .text(function (champion) { return champion.name; })
-      .append("img")
-      .attr("src", function(champion) { return champion.image; });
-  }
-
-  function nameFn(champion) {
-    return champion.name;
   }
 
   window.onload = function () {
-    // renderChampionFrames(state.current.allies);
-    // window.setTimeout(function () {
-    //   state.selectAllyChampionByName(state.current, 'Top', "Amumu");
-    //   renderChampionFrames('ally', state.current.allies);
-    //   // alert('allies: ' + JSON.stringify(state.current.allies, undefined, 2));
-    // }, 1000);
-    $(".champion-select").autocomplete(autocomplete.make(render)).focus(function () {
-    $(this).autocomplete("search");
-  });
-
-    $(".champion-select").each(function() {
-      $(this).data( "ui-autocomplete" )._renderItem = function(ul, item) {
-        return $("<li>")
-          .append(" \
-            <a> \
-              <table> \
-                <tr> \
-                  <td> \
-                    <img style='height: 30px' src='" + item.image + "' /> \
-                  </td> \
-                  <td> \
-                    " + item.name + " \
-                  </td> \
-                </tr> \
-              </table> \
-            </a>")
-          .appendTo(ul);
-      };
-    });
-    // buildChampions(d3.select("#left-champions"), "ally", state.current.allies);
-    // buildChampions(d3.select("#right-champions"), "enemy", state.current.enemies);
-    // render(state.current);
+    render(state);
   };
 
   this.selectAllyChampion = function (kind, championName) {

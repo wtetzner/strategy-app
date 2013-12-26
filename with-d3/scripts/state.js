@@ -40,7 +40,8 @@ var state = (function () {
       "snowball":       { name: "Snowball" }
     },
     allyStrategies:  makeStrategies(this),
-    enemyStrategies: makeStrategies(this)
+    enemyStrategies: makeStrategies(this),
+    appState: { id: "normal" }
   };
 
   this.current = empty;
@@ -48,6 +49,7 @@ var state = (function () {
   this.champions = champions;
 
   function findChampion(name) {
+    if (name === "") return null;
     for (var i = 0; i < this.champions.length; i++) {
       var champion = this.champions[i];
       if (champion.name.toLowerCase() === name.toLowerCase()) {
@@ -83,22 +85,24 @@ var state = (function () {
     var champion = findChampion(championName);
     for (var i = 0; i < data.allies.length; i++) {
       var ally = data.allies[i];
-      if (ally.kind.toLowerCase() === kind.toLowerCase()) {
+      if (ally.kind.toLowerCase() === kind.toLowerCase() && champion) {
         ally.data = champion;
         break;
       }
     }
+    data.appState = { id: "normal" };
   };
 
   this.selectEnemyChampionByName = function(data, kind, championName) {
     var champion = findChampion(championName);
     for (var i = 0; i < data.enemies.length; i++) {
       var enemy = data.enemies[i];
-      if (enemy.kind.toLowerCase() === kind.toLowerCase()) {
+      if (enemy.kind.toLowerCase() === kind.toLowerCase() && champion) {
         enemy.data = champion;
         break;
       }
     }
+    data.appState = { id: "normal" };
   };
 
   return this;

@@ -1,20 +1,22 @@
 <html>
   <head>
-    <title>LoL Strategy Framework</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <!-- <link href="scripts/libraries/jquery-ui/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" /> -->
-    <script type="text/javascript" src="scripts/libraries/jquery/jquery-1.10.2.min.js"></script>
-    <!-- <script type="text/javascript" src="scripts/libraries/jquery-ui/ui/jquery-ui.js"></script> -->
+    <title>blah</title>
     <script type="text/javascript" src="scripts/libraries/d3.v3.min.js"></script>
-    <script type="text/javascript" src="data/champion-data.js"></script>
-    <link href="styles/compose.css" rel="stylesheet" type="text/css" />
-    <!-- <script type="text/javascript" src="scripts/autocomplete.js"></script> -->
-    <script type="text/javascript" src="scripts/state.js"></script>
-    <script type="text/javascript" src="scripts/compose.js"></script>
+    <!-- <script type="text/javascript"> -->
+    <!--   window.onload = function () { -->
+    <!--     d3.select("body").append("svg:svg") -->
+    <!--     .attr("width", 100) -->
+    <!--     .attr("height", 100) -->
+    <!--     .append("svg:image") -->
+    <!--     .attr("width", 50) -->
+    <!--     .attr("height", 50) -->
+    <!--     .attr("xlink:href", "images/unknown.png") -->
+    <!--     .on("click", function (d) { alert('asdf'); }); -->
+    <!--   } -->
+    <!-- </script> -->
   </head>
-  <body>
-    <div id="svg-content">
-      <svg
+  <body style="background-color: gray;">
+<svg
          width="1280"
          height="720"
          <!-- id="svg-block" -->
@@ -235,73 +237,63 @@
           <rect class="enemy-frame top-frame" x="1028" y="68" width="250" height="120" stroke="#301740" stroke-width="2" fill="url(#gradient1)" rx="12" ry="12"/>
           <rect class="enemy-image-frame" x="1208" y="74" width="64" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient2)"/>
           <image class="enemy-image" x="1208" y="74" width="64" height="64" xlink:href="images/unknown.png" />
-          <rect onclick="renderer.openSelection('enemy', 'Top');" class="enemy-image-frame" x="1208" y="74" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient2)"/>
+          <rect onclick="alert('bob!!!'); alert('bob!!!'); alert('bob!!!');" class="enemy-image-frame" x="1208" y="74" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient2)"/>
           <rect x="1172" y="142" width="100" height="25" stroke="#301740" stroke-width="2" fill="url(#gradient3)"/>
-          <text class="enemy-champion-name" text-anchor="end" x="1269" y="160" width="100" font-size="12" fill="white">Champion</text>
           <rect x="1034" y="74" width="170" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient4)"/>
           <rect class="enemy-frame jungle-frame" x="1028" y="198" width="250" height="120" stroke="#301740" stroke-width="2" fill="url(#gradient5)" rx="12" ry="12"/>
           <rect class="enemy-image-frame" x="1208" y="204" width="64" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient6)"/>
           <image class="enemy-image" x="1208" y="204" width="64" height="64" xlink:href="images/unknown.png" />
-          <rect onclick="renderer.openSelection('enemy', 'Jungle');" class="enemy-image-frame" x="1208" y="204" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient6)"/>
+          <rect class="enemy-image-frame" x="1208" y="204" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient6)"/>
           <rect x="1172" y="272" width="100" height="25" stroke="#301740" stroke-width="2" fill="url(#gradient7)"/>
-          <text class="enemy-champion-name" text-anchor="end" x="1269" y="290" width="100" font-size="12" fill="white">Champion</text>
           <rect x="1034" y="204" width="170" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient8)"/>
           <rect class="enemy-frame mid-frame" x="1028" y="328" width="250" height="120" stroke="#301740" stroke-width="2" fill="url(#gradient9)" rx="12" ry="12"/>
           <rect class="enemy-image-frame" x="1208" y="334" width="64" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient10)"/>
           <image class="enemy-image" x="1208" y="334" width="64" height="64" xlink:href="images/unknown.png" />
-          <rect onclick="renderer.openSelection('enemy', 'Mid');" class="enemy-image-frame" x="1208" y="334" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient10)"/>
+          <rect class="enemy-image-frame" x="1208" y="334" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient10)"/>
           <rect x="1172" y="402" width="100" height="25" stroke="#301740" stroke-width="2" fill="url(#gradient11)"/>
-          <text class="enemy-champion-name" text-anchor="end" x="1269" y="420" width="100" font-size="12" fill="white">Champion</text>
           <rect x="1034" y="334" width="170" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient12)"/>
           <rect class="enemy-frame carry-frame" x="1028" y="458" width="250" height="120" stroke="#301740" stroke-width="2" fill="url(#gradient13)" rx="12" ry="12"/>
           <rect class="enemy-image-frame" x="1208" y="464" width="64" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient14)"/>
           <image class="enemy-image" x="1208" y="464" width="64" height="64" xlink:href="images/unknown.png" />
-          <rect onclick="renderer.openSelection('enemy', 'Carry');" class="enemy-image-frame" x="1208" y="464" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient14)"/>
+          <rect class="enemy-image-frame" x="1208" y="464" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient14)"/>
           <rect x="1172" y="532" width="100" height="25" stroke="#301740" stroke-width="2" fill="url(#gradient15)"/>
-          <text class="enemy-champion-name" text-anchor="end" x="1269" y="550" width="100" font-size="12" fill="white">Champion</text>
           <rect x="1034" y="464" width="170" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient16)"/>
           <rect class="enemy-frame support-frame" x="1028" y="588" width="250" height="120" stroke="#301740" stroke-width="2" fill="url(#gradient17)" rx="12" ry="12"/>
           <rect class="enemy-image-frame" x="1208" y="594" width="64" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient18)"/>
           <image class="enemy-image" x="1208" y="594" width="64" height="64" xlink:href="images/unknown.png" />
-          <rect onclick="renderer.openSelection('enemy', 'Support');" class="enemy-image-frame" x="1208" y="594" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient18)"/>
+          <rect class="enemy-image-frame" x="1208" y="594" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient18)"/>
           <rect x="1172" y="662" width="100" height="25" stroke="#301740" stroke-width="2" fill="url(#gradient19)"/>
-          <text class="enemy-champion-name" text-anchor="end" x="1269" y="680" width="100" font-size="12" fill="white">Champion</text>
           <rect x="1034" y="594" width="170" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient20)"/>
           <rect class="ally-frame top-frame" x="2" y="68" width="250" height="120" stroke="#252e40" stroke-width="2" fill="url(#gradient21)" rx="12" ry="12"/>
           <rect class="ally-image-frame" x="8" y="76" width="64" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient22)" />
           <image class="ally-image" x="8" y="76" width="64" height="64" xlink:href="images/unknown.png" />
-          <rect onclick="renderer.openSelection('ally', 'Top');" class="ally-image-frame" x="8" y="76" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient22)" />
+          <rect onclick="alert('bob');" class="ally-image-frame" x="8" y="76" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient22)" />
           <rect x="8" y="144" width="100" height="25" stroke="#252e40" stroke-width="2" fill="url(#gradient23)"/>
-          <text class="ally-champion-name" text-anchor="start" x="11" y="160" width="100" font-size="12" fill="white">Champion</text>
           <rect x="76" y="76" width="170" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient24)"/>
           <text x="128" y="165" font-size="20" fill="white">Top</text>
           <rect class="ally-frame jungle-frame" x="2" y="198" width="250" height="120" stroke="#252e40" stroke-width="2" fill="url(#gradient25)" rx="12" ry="12"/>
           <rect class="ally-image-frame" x="8" y="206" width="64" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient26)"/>
           <image class="ally-image" x="8" y="206" width="64" height="64" xlink:href="images/unknown.png" />
-          <rect onclick="renderer.openSelection('ally', 'Jungle');" class="ally-image-frame" x="8" y="206" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient26)"/>
+          <rect class="ally-image-frame" x="8" y="206" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient26)"/>
           <rect x="8" y="274" width="100" height="25" stroke="#252e40" stroke-width="2" fill="url(#gradient27)"/>
-          <text class="ally-champion-name" text-anchor="start" x="11" y="290" width="100" font-size="12" fill="white">Champion</text>
           <rect x="76" y="206" width="170" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient28)"/>
           <rect class="ally-frame mid-frame" x="2" y="328" width="250" height="120" stroke="#252e40" stroke-width="2" fill="url(#gradient29)" rx="12" ry="12"/>
           <rect class="ally-image-frame" x="8" y="336" width="64" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient30)"/>
           <image class="ally-image" x="8" y="336" width="64" height="64" xlink:href="images/unknown.png" />
-          <rect onclick="renderer.openSelection('ally', 'Mid');" class="ally-image-frame" x="8" y="336" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient30)"/>
+          <rect class="ally-image-frame" x="8" y="336" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient30)"/>
           <rect x="8" y="404" width="100" height="25" stroke="#252e40" stroke-width="2" fill="url(#gradient31)"/>
-          <text class="ally-champion-name" text-anchor="start" x="11" y="420" width="100" font-size="12" fill="white">Champion</text>
           <rect x="76" y="336" width="170" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient32)"/>
           <rect class="ally-frame carry-frame" x="2" y="458" width="250" height="120" stroke="#252e40" stroke-width="2" fill="url(#gradient33)" rx="12" ry="12"/>
           <rect class="ally-image-frame" x="8" y="466" width="64" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient34)"/>
           <image class="ally-image" x="8" y="466" width="64" height="64" xlink:href="images/unknown.png" />
-          <rect onclick="renderer.openSelection('ally', 'Carry');" class="ally-image-frame" x="8" y="466" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient34)"/>
+          <rect class="ally-image-frame" x="8" y="466" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient34)"/>
           <rect x="8" y="534" width="100" height="25" stroke="#252e40" stroke-width="2" fill="url(#gradient35)"/>
-          <text class="ally-champion-name" text-anchor="start" x="11" y="550" width="100" font-size="12" fill="white">Champion</text>
           <rect x="76" y="466" width="170" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient36)"/>
           <rect class="ally-frame support-frame" x="2" y="588" width="250" height="120" stroke="#252e40" stroke-width="2" fill="url(#gradient37)" rx="12" ry="12"/>
           <rect class="ally-image-frame" x="8" y="596" width="64" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient38)"/>
           <image class="ally-image" x="8" y="596" width="64" height="64" xlink:href="images/unknown.png" />
-          <rect onclick="renderer.openSelection('ally', 'Support');" class="ally-image-frame" x="8" y="596" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient38)"/>
+          <rect class="ally-image-frame" x="8" y="596" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient38)"/>
           <rect x="8" y="664" width="100" height="25" stroke="#252e40" stroke-width="2" fill="url(#gradient39)"/>
-          <text class="ally-champion-name" text-anchor="start" x="11" y="680" width="100" font-size="12" fill="white">Champion</text>
           <rect x="76" y="596" width="170" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient40)"/>
           <g>
             <g opacity="0.502">
@@ -328,10 +320,9 @@
           <rect x="332" y="513" width="300" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient45)"/>
           <rect x="648" y="513" width="300" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient46)"/>
         </g>
-        <g id="champion-select-frame" style="display: none;">
-          <rect id="champion-select-rect" x="288" y="8" width="704" height="704" fill="black" />
-        </g>
+        <!-- <g id="champion-select-frame"> -->
+        <!--   <rect id="champion-select-rect" x="288" y="8" width="704" height="704" fill="black" /> -->
+        <!-- </g> -->
       </svg>
-    </div>
   </body>
 </html>
