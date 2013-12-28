@@ -62,7 +62,7 @@ window.renderer = (function () {
         id: "select-champion",
         kind: kind,
         position: position,
-        championName: championName,
+        championName: "",//championName,
         champions: []
       };
 
@@ -108,6 +108,10 @@ window.renderer = (function () {
               selectChampion(state.current.appState.kind, state.current.appState.position, state.current.appState.champions[0].name);
               return true;
             }
+          } else if (e.which === 27) {
+            state.current.appState = { id: "normal" };
+            render(state);
+            return true;
           }
         }
         return true;
