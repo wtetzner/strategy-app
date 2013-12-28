@@ -105,5 +105,17 @@ var state = (function () {
     data.appState = { id: "normal" };
   };
 
+  this.setChampionName = function(kind, position, championName) {
+    // var items = (kind === 'ally') ? this.current.allies : this.current.enemies;
+    // for (var i = 0; i < items.length; i++) {
+    //   if (items[i].kind.toLowerCase() === position.toLowerCase()) {
+    //     items[i].data.name = championName;
+    //   }
+    // }
+    if (state.current.appState.id === "select-champion") {
+      state.current.appState.championName = championName;
+    }
+  };
+
   return this;
 })();
