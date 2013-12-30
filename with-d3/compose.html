@@ -11,20 +11,36 @@
   </head>
   <body>
     <div id="svg-content">
-      <svg
-         <!-- width="100%" -->
-         style="position:absolute; top:0; left:0; height:100%; width:100%;"
-         <!-- width="1280" -->
-         <!-- height="720" -->
-         <!-- width="100%" -->
-         <!-- height="100" -->
-         <!-- id="svg-block" -->
-         <!-- viewBox="0 0 1280 720" -->
-           <!-- style="background-color:#ffffff00; margin: auto;" version="1.1" -->
-           xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
-           <!-- x="0px" y="0px" -->
-           >
+      <svg width="1280px"
+         height="720px"
+         id="svg-block"
+         viewBox="0 0 1280 720"
+         x="0px" y="0px">
         <defs>
+          <linearGradient id="gradient-oo-bar" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop stop-color="#25402F" stop-opacity="0.8" offset="0%"/>
+            <stop stop-color="#555555" stop-opacity="0.8" offset="100%"/>
+          </linearGradient>
+          <linearGradient id="gradient-os-bar" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop stop-color="#5DA37A" stop-opacity="0.8" offset="0%"/>
+            <stop stop-color="#555555" stop-opacity="0.8" offset="100%"/>
+          </linearGradient>
+          <linearGradient id="gradient-ss-bar" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop stop-color="#A9ABAE" stop-opacity="0.8" offset="0%"/>
+            <stop stop-color="#555555" stop-opacity="0.8" offset="100%"/>
+          </linearGradient>
+          <linearGradient id="gradient-sh-bar" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop stop-color="#96B9FC" stop-opacity="0.8" offset="0%"/>
+            <stop stop-color="#555555" stop-opacity="0.8" offset="100%"/>
+          </linearGradient>
+          <linearGradient id="gradient-ho-bar" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop stop-color="#53668B" stop-opacity="0.8" offset="0%"/>
+            <stop stop-color="#555555" stop-opacity="0.8" offset="100%"/>
+          </linearGradient>
+          <linearGradient id="gradient-hh-bar" x1="50%" y1="0%" x2="50%" y2="100%">
+            <stop stop-color="#252E3F" stop-opacity="0.8" offset="0%"/>
+            <stop stop-color="#555555" stop-opacity="0.8" offset="100%"/>
+          </linearGradient>
           <linearGradient id="gradient1" x1="50%" y1="0%" x2="50%" y2="100%">
             <stop stop-color="#333333" stop-opacity="0.8" offset="0%"/>
             <stop stop-color="#69338c" stop-opacity="0.8" offset="47.7778%"/>
@@ -238,7 +254,14 @@
           <image class="enemy-image" x="1208" y="74" width="64" height="64" xlink:href="images/unknown.png" />
           <rect class="enemy-image-frame" x="1208" y="74" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient2)"/>
           <rect x="1172" y="142" width="100" height="25" stroke="#301740" stroke-width="2" fill="url(#gradient3)"/>
-          <rect x="1034" y="74" width="170" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient4)"/>
+          <rect id="enemy-top-bar-container" x="1034" y="74" width="170" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient4)"/>
+          <rect class="enemy-bar enemy-top-bar-oo champion-bar-oo" x="1036" y="76" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-oo-bar)" />
+          <rect class="enemy-bar enemy-top-bar-os champion-bar-os" x="1036" y="86" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-os-bar)" />
+          <rect class="enemy-bar enemy-top-bar-ss champion-bar-ss" x="1036" y="96" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ss-bar)" />
+          <rect class="enemy-bar enemy-top-bar-sh champion-bar-sh" x="1036" y="106" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-sh-bar)" />
+          <rect class="enemy-bar enemy-top-bar-ho champion-bar-ho" x="1036" y="116" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ho-bar)" />
+          <rect class="enemy-bar enemy-top-bar-hh champion-bar-hh" x="1036" y="126" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-hh-bar)" />
+          <text x="1100" width="142" text-anchor="middle" y="171" fill="#ffffff" style="font-weight: bold; font-size: 20px; font-family: FrizQuadrata; color: #ffffff; text-align: left; ">Top</text>
           <rect onclick="renderer.openSelection('enemy', 'Top');" class="click-frame" x="1028" y="68" width="250" height="120" fill-opacity="0"/>
           <text class="enemy-champion-name enemy-name-top" text-anchor="end" x="1269" y="160" width="100" font-size="12" fill="white"></text>
 
@@ -248,6 +271,13 @@
           <rect class="enemy-image-frame" x="1208" y="204" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient6)"/>
           <rect x="1172" y="272" width="100" height="25" stroke="#301740" stroke-width="2" fill="url(#gradient7)"/>
           <rect x="1034" y="204" width="170" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient8)"/>
+          <rect class="enemy-bar enemy-top-bar-oo champion-bar-oo" x="1036" y="206" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-oo-bar)" />
+          <rect class="enemy-bar enemy-top-bar-os champion-bar-os" x="1036" y="216" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-os-bar)" />
+          <rect class="enemy-bar enemy-top-bar-ss champion-bar-ss" x="1036" y="226" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ss-bar)" />
+          <rect class="enemy-bar enemy-top-bar-sh champion-bar-sh" x="1036" y="236" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-sh-bar)" />
+          <rect class="enemy-bar enemy-top-bar-ho champion-bar-ho" x="1036" y="246" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ho-bar)" />
+          <rect class="enemy-bar enemy-top-bar-hh champion-bar-hh" x="1036" y="256" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-hh-bar)" />
+          <text x="1100" width="142" text-anchor="middle" y="300" fill="#ffffff" style="font-weight: bold; font-size: 20px; font-family: FrizQuadrata; color: #ffffff; text-align: left; ">Jungle</text>
           <rect onclick="renderer.openSelection('enemy', 'Jungle');" class="click-frame" x="1028" y="198" width="250" height="120" fill-opacity="0"/>
           <text class="enemy-champion-name enemy-name-jungle" text-anchor="end" x="1269" y="290" width="100" font-size="12" fill="white"></text>
 
@@ -257,6 +287,13 @@
           <rect class="enemy-image-frame" x="1208" y="334" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient10)"/>
           <rect x="1172" y="402" width="100" height="25" stroke="#301740" stroke-width="2" fill="url(#gradient11)"/>
           <rect x="1034" y="334" width="170" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient12)"/>
+          <rect class="enemy-bar enemy-top-bar-oo champion-bar-oo" x="1036" y="336" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-oo-bar)" />
+          <rect class="enemy-bar enemy-top-bar-os champion-bar-os" x="1036" y="346" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-os-bar)" />
+          <rect class="enemy-bar enemy-top-bar-ss champion-bar-ss" x="1036" y="356" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ss-bar)" />
+          <rect class="enemy-bar enemy-top-bar-sh champion-bar-sh" x="1036" y="366" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-sh-bar)" />
+          <rect class="enemy-bar enemy-top-bar-ho champion-bar-ho" x="1036" y="376" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ho-bar)" />
+          <rect class="enemy-bar enemy-top-bar-hh champion-bar-hh" x="1036" y="387" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-hh-bar)" />
+          <text x="1100" width="142" text-anchor="middle" y="430" fill="#ffffff" style="font-weight: bold; font-size: 20px; font-family: FrizQuadrata; color: #ffffff; text-align: left; ">Mid</text>
           <rect onclick="renderer.openSelection('enemy', 'Mid');" class="click-frame" x="1028" y="334" width="250" height="120" fill-opacity="0"/>
           <text class="enemy-champion-name enemy-name-mid" text-anchor="end" x="1269" y="420" width="100" font-size="12" fill="white"></text>
 
@@ -266,6 +303,13 @@
           <rect class="enemy-image-frame" x="1208" y="464" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient14)"/>
           <rect x="1172" y="532" width="100" height="25" stroke="#301740" stroke-width="2" fill="url(#gradient15)"/>
           <rect x="1034" y="464" width="170" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient16)"/>
+          <rect class="enemy-bar enemy-top-bar-oo champion-bar-oo" x="1036" y="466" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-oo-bar)" />
+          <rect class="enemy-bar enemy-top-bar-os champion-bar-os" x="1036" y="476" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-os-bar)" />
+          <rect class="enemy-bar enemy-top-bar-ss champion-bar-ss" x="1036" y="486" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ss-bar)" />
+          <rect class="enemy-bar enemy-top-bar-sh champion-bar-sh" x="1036" y="496" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-sh-bar)" />
+          <rect class="enemy-bar enemy-top-bar-ho champion-bar-ho" x="1036" y="506" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ho-bar)" />
+          <rect class="enemy-bar enemy-top-bar-hh champion-bar-hh" x="1036" y="516" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-hh-bar)" />
+          <text x="1100" width="142" text-anchor="middle" y="560" fill="#ffffff" style="font-weight: bold; font-size: 20px; font-family: FrizQuadrata; color: #ffffff; text-align: left; ">Carry</text>
           <rect onclick="renderer.openSelection('enemy', 'Carry');" class="click-frame" x="1028" y="458" width="250" height="120" fill-opacity="0"/>
           <text class="enemy-champion-name enemy-name-carry" text-anchor="end" x="1269" y="550" width="100" font-size="12" fill="white"></text>
 
@@ -275,6 +319,13 @@
           <rect class="enemy-image-frame" x="1208" y="594" width="64" height="64" stroke="#301740" stroke-width="2" fill-opacity="0" fill="url(#gradient18)"/>
           <rect x="1172" y="662" width="100" height="25" stroke="#301740" stroke-width="2" fill="url(#gradient19)"/>
           <rect x="1034" y="594" width="170" height="64" stroke="#301740" stroke-width="2" fill="url(#gradient20)"/>
+          <rect class="enemy-bar enemy-top-bar-oo champion-bar-oo" x="1036" y="596" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-oo-bar)" />
+          <rect class="enemy-bar enemy-top-bar-os champion-bar-os" x="1036" y="606" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-os-bar)" />
+          <rect class="enemy-bar enemy-top-bar-ss champion-bar-ss" x="1036" y="616" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ss-bar)" />
+          <rect class="enemy-bar enemy-top-bar-sh champion-bar-sh" x="1036" y="626" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-sh-bar)" />
+          <rect class="enemy-bar enemy-top-bar-ho champion-bar-ho" x="1036" y="636" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ho-bar)" />
+          <rect class="enemy-bar enemy-top-bar-hh champion-bar-hh" x="1036" y="646" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-hh-bar)" />
+          <text x="1100" width="142" text-anchor="middle" y="691" fill="#ffffff" style="font-weight: bold; font-size: 20px; font-family: FrizQuadrata; color: #ffffff; text-align: left; ">Support</text>
           <rect onclick="renderer.openSelection('enemy', 'Support');" class="click-frame" x="1028" y="588" width="250" height="120" fill-opacity="0"/>
           <text class="enemy-champion-name enemy-name-support" text-anchor="end" x="1269" y="680" width="100" font-size="12" fill="white"></text>
 
@@ -284,7 +335,13 @@
           <rect class="ally-image-frame" x="8" y="76" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient22)" />
           <rect x="8" y="144" width="100" height="25" stroke="#252e40" stroke-width="2" fill="url(#gradient23)"/>
           <rect x="76" y="76" width="170" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient24)"/>
-          <text x="128" y="165" font-size="20" fill="white">Top</text>
+          <rect class="ally-bar ally-top-bar-oo champion-bar-oo" x="78" y="78" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-oo-bar)" />
+          <rect class="ally-bar ally-top-bar-os champion-bar-os" x="78" y="88" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-os-bar)" />
+          <rect class="ally-bar ally-top-bar-ss champion-bar-ss" x="78" y="98" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ss-bar)" />
+          <rect class="ally-bar ally-top-bar-sh champion-bar-sh" x="78" y="108" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-sh-bar)" />
+          <rect class="ally-bar ally-top-bar-ho champion-bar-ho" x="78" y="118" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ho-bar)" />
+          <rect class="ally-bar ally-top-bar-hh champion-bar-hh" x="78" y="128" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-hh-bar)" />
+          <text x="178" width="142" text-anchor="middle" y="172" fill="#ffffff" style="font-weight: bold; font-size: 20px; font-family: FrizQuadrata; color: #ffffff; text-align: left; ">Top</text>
           <rect onclick="renderer.openSelection('ally', 'Top');" class="click-frame" x="2" y="68" width="250" height="120" fill-opacity="0"/>
           <text class="ally-champion-name ally-name-top" text-anchor="start" x="11" y="160" width="100" font-size="12" fill="white"></text>
 
@@ -294,6 +351,13 @@
           <rect class="ally-image-frame" x="8" y="206" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient26)"/>
           <rect x="8" y="274" width="100" height="25" stroke="#252e40" stroke-width="2" fill="url(#gradient27)"/>
           <rect x="76" y="206" width="170" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient28)"/>
+          <rect class="ally-bar ally-top-bar-oo champion-bar-oo" x="78" y="208" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-oo-bar)" />
+          <rect class="ally-bar ally-top-bar-os champion-bar-os" x="78" y="218" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-os-bar)" />
+          <rect class="ally-bar ally-top-bar-ss champion-bar-ss" x="78" y="228" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ss-bar)" />
+          <rect class="ally-bar ally-top-bar-sh champion-bar-sh" x="78" y="238" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-sh-bar)" />
+          <rect class="ally-bar ally-top-bar-ho champion-bar-ho" x="78" y="248" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ho-bar)" />
+          <rect class="ally-bar ally-top-bar-hh champion-bar-hh" x="78" y="258" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-hh-bar)" />
+          <text x="178" width="142" text-anchor="middle" y="301" fill="#ffffff" style="font-weight: bold; font-size: 20px; font-family: FrizQuadrata; color: #ffffff; text-align: left; ">Jungle</text>
           <rect onclick="renderer.openSelection('ally', 'Jungle');" class="click-frame" x="2" y="198" width="250" height="120" fill-opacity="0"/>
           <text class="ally-champion-name ally-name-jungle" text-anchor="start" x="11" y="290" width="100" font-size="12" fill="white"></text>
 
@@ -303,6 +367,13 @@
           <rect class="ally-image-frame" x="8" y="336" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient30)"/>
           <rect x="8" y="404" width="100" height="25" stroke="#252e40" stroke-width="2" fill="url(#gradient31)"/>
           <rect x="76" y="336" width="170" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient32)"/>
+          <rect class="ally-bar ally-top-bar-oo champion-bar-oo" x="78" y="338" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-oo-bar)" />
+          <rect class="ally-bar ally-top-bar-os champion-bar-os" x="78" y="348" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-os-bar)" />
+          <rect class="ally-bar ally-top-bar-ss champion-bar-ss" x="78" y="358" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ss-bar)" />
+          <rect class="ally-bar ally-top-bar-sh champion-bar-sh" x="78" y="368" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-sh-bar)" />
+          <rect class="ally-bar ally-top-bar-ho champion-bar-ho" x="78" y="378" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ho-bar)" />
+          <rect class="ally-bar ally-top-bar-hh champion-bar-hh" x="78" y="388" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-hh-bar)" />
+          <text x="178" width="142" text-anchor="middle" y="431" fill="#ffffff" style="font-weight: bold; font-size: 20px; font-family: FrizQuadrata; color: #ffffff; text-align: left; ">Mid</text>
           <rect onclick="renderer.openSelection('ally', 'Mid');" class="click-frame" x="2" y="328" width="250" height="120" fill-opacity="0"/>
           <text class="ally-champion-name ally-name-mid" text-anchor="start" x="11" y="420" width="100" font-size="12" fill="white"></text>
 
@@ -312,6 +383,13 @@
           <rect class="ally-image-frame" x="8" y="466" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient34)"/>
           <rect x="8" y="534" width="100" height="25" stroke="#252e40" stroke-width="2" fill="url(#gradient35)"/>
           <rect x="76" y="466" width="170" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient36)"/>
+          <rect class="ally-bar ally-top-bar-oo champion-bar-oo" x="78" y="468" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-oo-bar)" />
+          <rect class="ally-bar ally-top-bar-os champion-bar-os" x="78" y="478" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-os-bar)" />
+          <rect class="ally-bar ally-top-bar-ss champion-bar-ss" x="78" y="488" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ss-bar)" />
+          <rect class="ally-bar ally-top-bar-sh champion-bar-sh" x="78" y="498" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-sh-bar)" />
+          <rect class="ally-bar ally-top-bar-ho champion-bar-ho" x="78" y="508" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ho-bar)" />
+          <rect class="ally-bar ally-top-bar-hh champion-bar-hh" x="78" y="518" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-hh-bar)" />
+          <text x="178" width="142" text-anchor="middle" y="561" fill="#ffffff" style="font-weight: bold; font-size: 20px; font-family: FrizQuadrata; color: #ffffff; text-align: left; ">Carry</text>
           <rect onclick="renderer.openSelection('ally', 'Carry');" class="click-frame" x="2" y="458" width="250" height="120" fill-opacity="0"/>
           <text class="ally-champion-name ally-name-carry" text-anchor="start" x="11" y="550" width="100" font-size="12" fill="white"></text>
 
@@ -321,6 +399,13 @@
           <rect class="ally-image-frame" x="8" y="596" width="64" height="64" stroke="#252e40" stroke-width="2" fill-opacity="0" fill="url(#gradient38)"/>
           <rect x="8" y="664" width="100" height="25" stroke="#252e40" stroke-width="2" fill="url(#gradient39)"/>
           <rect x="76" y="596" width="170" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient40)"/>
+          <rect class="ally-bar ally-top-bar-oo champion-bar-oo" x="78" y="598" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-oo-bar)" />
+          <rect class="ally-bar ally-top-bar-os champion-bar-os" x="78" y="608" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-os-bar)" />
+          <rect class="ally-bar ally-top-bar-ss champion-bar-ss" x="78" y="618" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ss-bar)" />
+          <rect class="ally-bar ally-top-bar-sh champion-bar-sh" x="78" y="628" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-sh-bar)" />
+          <rect class="ally-bar ally-top-bar-ho champion-bar-ho" x="78" y="638" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-ho-bar)" />
+          <rect class="ally-bar ally-top-bar-hh champion-bar-hh" x="78" y="648" width="0" height="10" stroke="#aaaaaa" fill="url(#gradient-hh-bar)" />
+          <text x="178" width="142" text-anchor="middle" y="692" fill="#ffffff" style="font-weight: bold; font-size: 20px; font-family: FrizQuadrata; color: #ffffff; text-align: left; ">Support</text>
           <rect onclick="renderer.openSelection('ally', 'Support');" class="click-frame" x="2" y="588" width="250" height="120" fill-opacity="0"/>
           <text class="ally-champion-name ally-name-support" text-anchor="start" x="11" y="680" width="100" font-size="12" fill="white"></text>
           <g>

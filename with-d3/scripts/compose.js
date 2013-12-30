@@ -7,11 +7,47 @@ window.renderer = (function () {
   });
 
   function renderChampionFrames(kind, champions) {
+    function barWidth(champion, variable) {
+      return (166 * (champion.data[variable] | 0)) / 5;
+    }
+
+    var enemy_box = document.getElementById("enemy-top-bar-container");
+    var enemy_right = (enemy_box.getAttribute("x") | 0) + (enemy_box.getAttribute("width") | 0) - 2;
+
+    function renderBars(variable) {
+      d3.selectAll('.' + kind + '-bar.champion-bar-' + variable)
+        .data(champions)
+        .transition()
+        .attr("width", function (champion) {
+          return barWidth(champion, variable);
+        });
+
+      if (kind === 'enemy') {
+        d3.selectAll('.enemy-bar.champion-bar-' + variable)
+          .data(champions)
+          .transition()
+          .attr("width", function (champion) {
+            return barWidth(champion, variable);
+          })
+          .attr("x", function (champion) {
+            return enemy_right - barWidth(champion, variable);
+          });
+      }
+    }
+
+    renderBars('oo');
+    renderBars('os');
+    renderBars('ss');
+    renderBars('sh');
+    renderBars('ho');
+    renderBars('hh');
+
     d3.selectAll("." + kind + "-image").data(champions)
       .transition()
       .attr("xlink:href", function(champion) {
         return champion.data.image;
       });
+
     var select_input = "." + kind + "-champion-name";
     d3.selectAll(select_input).data(champions)
       .transition()
@@ -47,11 +83,11 @@ window.renderer = (function () {
       }
       return false;
     });
-    champs.sort(function (a, b) {
-      var av = where(a);
-      var bv = where(b);
-      return av - bv;
-    });
+    // champs.sort(function (a, b) {
+    //   var av = where(a);
+    //   var bv = where(b);
+    //   return av - bv;
+    // });
     return champs;
   }
 
