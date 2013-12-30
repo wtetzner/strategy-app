@@ -6,6 +6,10 @@ window.renderer = (function () {
     img.src = champion.image;
   });
 
+  function renderStrategyBars(state) {
+
+  }
+
   function renderChampionFrames(kind, champions) {
     function barWidth(champion, variable) {
       return (166 * (champion.data[variable] | 0)) / 5;
@@ -73,11 +77,17 @@ window.renderer = (function () {
 
   function filteredChampions() {
     function where(champion) {
-      return champion.name.toLowerCase().indexOf(state.current.appState.championName.toLowerCase());
+      var textMatches = champion.name.toLowerCase().indexOf(state.current.appState.championName.toLowerCase()) !== -1;
+      if (!textMatches) return false;
+      if (state.current.appState.kind === 'ally') {
+        return !state.isAlly(champion.name);
+      } else {
+        return !state.isEnemy(champion.name);
+      }
     }
     var champs = state.champions.filter(function (champion) {
       if (state.current.appState.id === "select-champion") {
-        if (where(champion) !== -1) {
+        if (where(champion)) {
           return true;
         }
       }
@@ -117,12 +127,11 @@ window.renderer = (function () {
       }
 
       $('body').off('keypress').on('keypress', function (e) {
-        // alert(e.which);
         if (state.current.appState.id === "select-champion") {
           if (e.which === 8) {
             return removeLast() || false;
           }
-          if ($('.' + kind + '-name-' + position.toLowerCase()).text().length <= 12) {
+          if ($('.' + kind + '-name-' + position.toLowerCase()).text().length <= state.championNameMaxSize) {
             var code = e.which || e.keyCode;
             var chr = String.fromCharCode(code);
             var textfield = $('.' + kind + '-name-' + position.toLowerCase());
@@ -135,7 +144,6 @@ window.renderer = (function () {
       });
 
       $('body').off('keydown').on('keydown', function (e) {
-        // alert(e.which);
         if (state.current.appState.id === "select-champion") {
           if (e.which === 8) {
             return removeLast() || false;
@@ -189,9 +197,6 @@ window.renderer = (function () {
       .attr("width", 64)
       .attr("height", 64)
       .attr("xlink:href", function (champion) { return champion.image; });
-    // .on("click", function (champion) {
-    //   selectChampion(state.current.appState.kind, state.current.appState.position, champion.name);
-    // });
   }
 
   function renderChampionSelection(state) {
@@ -215,7 +220,7 @@ window.renderer = (function () {
       var keyCode = evt.keyCode;
       if (keyCode === 8) { // backspace
         return false;
-      }
+       }
       return true;
     };
     prepareChampionSelectionBox(state);

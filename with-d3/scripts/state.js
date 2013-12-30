@@ -47,6 +47,10 @@ var state = (function () {
   this.current = empty;
 
   this.champions = champions;
+  this.championNameMaxSize = champions.map(function (champion) { return champion.name.length; })
+    .reduce(function (previous, current) {
+      return Math.max(previous, current);
+    });
 
   function findChampion(name) {
     if (name === "") return null;

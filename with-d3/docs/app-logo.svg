@@ -1,0 +1,50 @@
+<?xml version="1.0" standalone="no"?>
+<!-- Generator: Adobe Fireworks 10, Export SVG Extension by Aaron Beall (http://fireworks.abeall.com) . Version: 0.6.1  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg id="App%20Logo.fw-Page%201" viewBox="0 0 700 700" style="background-color:#ffffff00" version="1.1"
+  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve"
+  x="0px" y="0px" width="700px" height="700px"
+>
+  <defs>
+    <radialGradient id="gradient1" cx="50%" cy="50%" r="99.8271%">
+      <stop stop-color="#a9abae" stop-opacity="1" offset="0%"/>
+      <stop stop-color="#52658c" stop-opacity="1" offset="100%"/>
+    </radialGradient>
+    <radialGradient id="gradient2" cx="50%" cy="50%" r="81.2081%">
+      <stop stop-color="#24402f" stop-opacity="1" offset="0%"/>
+      <stop stop-color="#5ca47a" stop-opacity="1" offset="100%"/>
+    </radialGradient>
+    <radialGradient id="gradient3" cx="50%" cy="50%" r="137.2483%">
+      <stop stop-color="#52658c" stop-opacity="1" offset="0%"/>
+      <stop stop-color="#5ca47a" stop-opacity="1" offset="100%"/>
+    </radialGradient>
+    <filter id="filter1" x="-100%" y="-100%" width="300%" height="300%">
+      <!-- Glow -->
+      <feColorMatrix result="out" in="SourceGraphic" type="matrix" values="0 0 0 0.3216 0  0 0 0 0.3961 0  0 0 0 0.549 0  0 0 0 0.8706 0"/>
+      <feMorphology result="out" in="out" operator="dilate" radius="5"/>
+      <feGaussianBlur result="out" in="out" stdDeviation="4"/>
+      <feBlend in="SourceGraphic" in2="out" mode="normal" result="Glow1"/>
+    </filter>
+  </defs>
+  <g id="Layer%201">
+    <g opacity="0.502">
+      <path id="Polygon" d="M 342.9595 341.535 L 213.9595 416 L 85 341.4649 L 85.0405 192.4649 L 214.0405 118 L 343 192.5351 L 342.9595 341.535 Z" stroke="#52658c" stroke-width="5" fill="url(#gradient1)"/>
+      <g>
+        <path d="M 214 182 C 260.9448 182 299 220.0552 299 267 C 299 313.9448 260.9448 352 214 352 C 167.0552 352 129 313.9448 129 267 C 129 220.0552 167.0552 182 214 182 ZM 214 228 C 235.5394 228 253 245.4606 253 267 C 253 288.5394 235.5394 306 214 306 C 192.4606 306 175 288.5394 175 267 C 175 245.4606 192.4606 228 214 228 Z" stroke="#a9abae" stroke-width="3" fill="#52658c"/>
+      </g>
+    </g>
+    <g opacity="0.502">
+      <path id="Polygon2" d="M 616.9595 341.535 L 487.9595 416 L 359 341.465 L 359.0405 192.465 L 488.0405 118 L 617 192.535 L 616.9595 341.535 Z" stroke="#a9abae" stroke-width="5" fill="url(#gradient2)"/>
+      <g>
+        <path d="M 468.6906 343.4646 L 580.8013 210.6735 L 556.1989 189.9932 L 464.7462 298.3157 L 464.7462 298.3157 L 415.9852 257.3282 L 395.3273 281.7968 L 468.6906 343.4646 L 468.6906 343.4646 Z" stroke="#5ca47a" stroke-width="3" fill="#a9abae"/>
+      </g>
+    </g>
+    <g opacity="0.502">
+      <path id="Polygon3" d="M 479.9595 575.535 L 350.9595 650 L 222 575.465 L 222.0405 426.465 L 351.0405 352 L 480 426.535 L 479.9595 575.535 Z" stroke="#5ca47a" stroke-width="5" fill="url(#gradient3)"/>
+      <g>
+        <path d="M 299.233 419 L 267 451.0388 L 317.765 501.5 L 267 551.9612 L 299.233 584 L 350 533.54 L 400.7671 584 L 433 551.9613 L 382.235 501.5 L 433 451.0388 L 400.767 419 L 350 469.46 L 299.233 419 Z" stroke="#52658c" stroke-width="3" fill="#5ba479"/>
+      </g>
+    </g>
+    <text filter="url(#filter1)" x="98" y="121" width="508" fill="#5aa479" style="font-size: 66px; font-family: Razer Regular; color: #5aa479; text-align: center; "><tspan><![CDATA[Strategy]]></tspan><tspan style="color: #52658c; "><![CDATA[ App]]></tspan></text>
+  </g>
+</svg>
