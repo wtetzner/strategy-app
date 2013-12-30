@@ -131,7 +131,7 @@ window.renderer = (function () {
           if (e.which === 8) {
             return removeLast() || false;
           }
-          if ($('.' + kind + '-name-' + position.toLowerCase()).text().length <= state.championNameMaxSize) {
+          if ($('.' + kind + '-name-' + position.toLowerCase()).text().length < state.championNameMaxSize) {
             var code = e.which || e.keyCode;
             var chr = String.fromCharCode(code);
             var textfield = $('.' + kind + '-name-' + position.toLowerCase());
