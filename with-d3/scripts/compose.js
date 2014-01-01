@@ -143,6 +143,14 @@ window.renderer = (function () {
             return "renderer.clickStrategy('enemy', '" + score[0] + "')";
           });
 
+        d3.selectAll('.enemy-strategy-bar-click')
+          .data(list)
+          .transition()
+          .duration(speed)
+          .attr("onclick", function (score) {
+            return "renderer.clickStrategy('enemy', '" + score[0] + "')";
+          });
+
         d3.selectAll('.enemy-strategy-text')
           .data(list)
           .transition()
@@ -168,7 +176,12 @@ window.renderer = (function () {
           .transition()
           .duration(speed)
           .attr("width", strategyBarWidth)
-          .attr("fill", barColor)
+          .attr("fill", barColor);
+
+        d3.selectAll('.enemy-strategy-bar-click')
+          .data(list)
+          .transition()
+          .duration(speed)
           .attr("onclick", function (score) {
             return "renderer.clickStrategy('enemy', '" + score[0] + "')";
           });
@@ -190,7 +203,12 @@ window.renderer = (function () {
           })
           .attr("x", function (score) {
             return (strategyBarWidth + allyStrategyBarLeft) - barWidth(5)(score);
-          })
+          });
+
+        d3.selectAll('.ally-strategy-bar-click')
+          .data(list)
+          .transition()
+          .duration(speed)
           .attr("onclick", function (score) {
             return "renderer.clickStrategy('ally', '" + score[0] + "')";
           });
@@ -221,7 +239,12 @@ window.renderer = (function () {
           .duration(speed)
           .attr("width", strategyBarWidth)
           .attr("fill", barColor)
-          .attr("x", allyStrategyBarLeft)
+          .attr("x", allyStrategyBarLeft);
+
+        d3.selectAll('.ally-strategy-bar-click')
+          .data(list)
+          .transition()
+          .duration(speed)
           .attr("onclick", function (score) {
             return "renderer.clickStrategy('ally', '" + score[0] + "')";
           });
