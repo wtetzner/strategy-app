@@ -283,6 +283,23 @@ window.renderer = (function () {
         return champion.data.image;
       });
 
+    if (kind === "ally") {
+      var normalBorder = "#301740";
+
+      d3.selectAll('.' + kind + '-frame')
+        .data(champions)
+        .transition()
+        .attr("stroke", function (champion) {
+          if (champion.data.empty) {
+            return normalBorder;
+          }
+          if (!championOK(champion, kind, champion.kind)) {
+            return normalBorder;//"#FF0000";
+          }
+          return normalBorder;
+        });
+    }
+
     var select_input = "." + kind + "-champion-name";
     d3.selectAll(select_input).data(champions)
       .transition()
@@ -306,24 +323,31 @@ window.renderer = (function () {
     render(state);
   };
 
+  function championOK(champion, kind, position) {
+    if (state.current.mode.id === "strategy-recommendations" && kind === "ally") {
+      if (!((champion[state.current.strategySelection[kind].strategy] >= 4)
+            && (positions[champion.role1].toLowerCase() === position.toLowerCase()
+                || (positions[champion.role2] || "").toLowerCase() === position.toLowerCase()))) {
+        return false;
+      }
+    }
+    if (state.current.mode.id === "lane-counters" && kind === "ally") {
+      var champ = state.championAtPosition((kind === "ally") ? "enemy" : "ally", position);
+      if ((champ.counters || []).indexOf(champion.name) == -1) {
+        return false;
+      }
+    }
+    return true;
+  }
+
   function filteredChampions() {
     var kind = state.current.appState.kind;
     var position = state.current.appState.position;
     function where(champion) {
+      if (!championOK(champion, kind, position)) {
+        return false;
+      }
       var textMatches = champion.name.toLowerCase().indexOf(state.current.appState.championName.toLowerCase()) !== -1;
-      if (state.current.mode.id === "strategy-recommendations" && kind === "ally") {
-        if (!((champion[state.current.strategySelection[kind].strategy] >= 4)
-              && (positions[champion.role1].toLowerCase() === position.toLowerCase()
-                  || (positions[champion.role2] || "").toLowerCase() === position.toLowerCase()))) {
-          return false;
-        }
-      }
-      if (state.current.mode.id === "lane-counters" && kind === "ally") {
-        var champ = state.championAtPosition((kind === "ally") ? "enemy" : "ally", position);
-        if (champ.counters.indexOf(champion.name) == -1) {
-          return false;
-        }
-      }
       if (!textMatches) return false;
       if (state.current.appState.kind === 'ally') {
         return !state.isAlly(champion.name);
@@ -490,9 +514,9 @@ window.renderer = (function () {
     document.onkeydown = function(evt) {
       evt = evt || window.event;
       var keyCode = evt.keyCode;
-      if (keyCode === 8) { // backspace
-        return false;
-      }
+          if (keyCode === 8) { // backspace
+            return false;
+          }
       return true;
     };
     prepareChampionSelectionBox(state);
