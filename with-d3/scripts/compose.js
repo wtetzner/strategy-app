@@ -1,13 +1,225 @@
 
 window.renderer = (function () {
 
+  var strategyNames = {
+    oo: "Split Push",
+    os: "Jungle Control",
+    ss: "Flex Strat",
+    sh: "Wombo Combo",
+    ho: "Gank Master",
+    hh: "Snowball"
+  };
+
+  var colors = {
+    oo: "url(#gradient-oo-bar)",
+    os: "url(#gradient-os-bar)",
+    ss: "url(#gradient-ss-bar)",
+    sh: "url(#gradient-sh-bar)",
+    ho: "url(#gradient-ho-bar)",
+    hh: "url(#gradient-hh-bar)"
+  };
+
+  var strategyBarWidth = 0;
+  var minStrategyBarWidth = 155;
+  var allyStrategyBarLeft = 0;
+  var enemyStrategyBarRight = 0;
+
   state.champions.map(function (champion) {
     var img = new Image();
     img.src = champion.image;
   });
 
-  function renderStrategyBars(state) {
+  function asAList(obj) {
+    var array = [];
+    for (var key in obj) {
+      array.push([key, obj[key]]);
+    }
+    return array;
+  }
 
+  this.compare = function (a,b) {
+    if (a < b) {
+      return -1;
+    } else if (a > b) {
+      return 1;
+    } else {
+      return 0;
+    }
+  };
+
+  function sortBy(array, keyFn) {
+    array.sort(function (a,b) {
+      return compare(keyFn(a), keyFn(b));
+    });
+    return array;
+  }
+
+  function renderStrategyBars(state) {
+    function emptyScores() {
+      return { oo: 0, os: 0, ss: 0, sh: 0, ho: 0, hh: 0 };
+    }
+
+    function calculateStrategyScores(champions) {
+      var scores = emptyScores();
+      var empty = emptyScores();
+
+      if(champions && champions.length > 0) {
+        for(
+          var championIndex = 0, champion = champions[championIndex];
+          championIndex < champions.length;
+          championIndex++, champion = champions[championIndex]
+        ) {
+          for(var score in scores) {
+            scores[score] += champion[score] || empty[score];
+          }
+        };
+      }
+      return scores;
+    }
+
+    this.computeStaticScores = function (strategy) {
+      if (strategy){
+        return state.strategies[strategy];
+      } else {
+        return { oo: 1, os: 1, ss: 1, sh: 1, ho: 1, hh: 1 };
+      }
+    };
+
+    this.scoreList = function (champions, strategy) {
+      var champScores = calculateStrategyScores(champions);
+      var staticScores = computeStaticScores(strategy);
+      var data = {};
+      for (var key in champScores) {
+        data[key] = { value: champScores[key], strategyValue: 6 - staticScores[key] };
+      }
+      var results = asAList(data);
+      sortBy(results, function (data) {
+        return data[1].value;
+      });
+      results.reverse();
+      return results;
+    };
+
+    function renderBars() {
+      function barWidth(maxValue) {
+        return function (score) {
+          return minStrategyBarWidth + (((strategyBarWidth - minStrategyBarWidth) * score[1].strategyValue) / (maxValue + 0.0));
+        };
+      }
+
+      function barColor(score) {
+        var key = score[0];
+        return colors[key];
+      }
+
+      var darkBorder = "#252e40";
+      var whiteBorder = "#FFFFFF";
+
+      if (state.current.strategySelection.ally != null) {
+        var list = scoreList(state.enemyChampions(), state.current.strategySelection.ally.strategy);
+        d3.selectAll('.enemy-strategy-bar')
+          .data(list)
+          .transition()
+          .attr("width", barWidth(5))
+          .attr("fill", barColor)
+          .attr("stroke", function (score) {
+            if (state.current.strategySelection.enemy.strategy === score[0]) {
+              return whiteBorder;
+            }
+            return darkBorder;
+          })
+          .attr("onclick", function (score) {
+            return "renderer.clickStrategy('enemy', '" + score[0] + "')";
+          });
+
+        d3.selectAll('.enemy-strategy-text')
+          .data(list)
+          .transition()
+          .attr("x", function (score) {
+            return enemyStrategyBarRight - (strategyBarWidth - barWidth(5)(score)) - 4;
+          })
+          .text(function (score) {
+            return strategyNames[score[0]];
+          });
+
+        d3.selectAll('.enemy-percent-text')
+          .data(list)
+          .transition()
+          .text(function (score) {
+            return score[1].value * 4;
+          });
+      } else {
+        var list = scoreList(state.enemyChampions(), state.current.strategySelection.ally.strategy);
+        d3.selectAll('.enemy-strategy-bar')
+          .data(list)
+          .transition()
+          .attr("width", strategyBarWidth)
+          .attr("fill", barColor)
+          .attr("onclick", function (score) {
+            return "renderer.clickStrategy('enemy', '" + score[0] + "')";
+          });
+      }
+
+      if (state.current.strategySelection.enemy != null) {
+        var list = scoreList(state.allyChampions(), state.current.strategySelection.enemy.strategy);
+        d3.selectAll('.ally-strategy-bar')
+          .data(list)
+          .transition()
+          .attr("width", barWidth(5))
+          .attr("fill", barColor)
+          .attr("stroke", function (score) {
+            if (state.current.strategySelection.ally.strategy === score[0]) {
+              return whiteBorder;
+            }
+            return darkBorder;
+          })
+          .attr("x", function (score) {
+            return (strategyBarWidth + allyStrategyBarLeft) - barWidth(5)(score);
+          })
+          .attr("onclick", function (score) {
+            return "renderer.clickStrategy('ally', '" + score[0] + "')";
+          });
+
+        d3.selectAll('.ally-strategy-text')
+          .data(list)
+          .transition()
+          .attr("x", function (score) {
+            return (strategyBarWidth + allyStrategyBarLeft) - barWidth(5)(score) + 4;
+          })
+          .text(function (score) {
+            return strategyNames[score[0]];
+          });
+
+        d3.selectAll('.ally-percent-text')
+          .data(list)
+          .transition()
+          .text(function (score) {
+            return score[1].value * 4;
+          });
+      } else {
+        var list = scoreList(state.allyChampions(), state.current.strategySelection.enemy.strategy);
+        d3.selectAll('.ally-strategy-bar')
+          .data(list)
+          .transition()
+          .attr("width", strategyBarWidth)
+          .attr("fill", barColor)
+          .attr("x", allyStrategyBarLeft)
+          .attr("onclick", function (score) {
+            return "renderer.clickStrategy('ally', '" + score[0] + "')";
+          });
+
+        d3.selectAll('.ally-strategy-text')
+          .data(list)
+          .transition()
+          .attr("x", function (score) {
+            return (strategyBarWidth + allyStrategyBarLeft) - strategyBarWidth + 4;
+          })
+          .text(function (score) {
+            return strategyNames[score[0]];
+          });
+      }
+    }
+    renderBars();
   }
 
   function renderChampionFrames(kind, champions) {
@@ -85,6 +297,7 @@ window.renderer = (function () {
         return !state.isEnemy(champion.name);
       }
     }
+
     var champs = state.champions.filter(function (champion) {
       if (state.current.appState.id === "select-champion") {
         if (where(champion)) {
@@ -93,11 +306,7 @@ window.renderer = (function () {
       }
       return false;
     });
-    // champs.sort(function (a, b) {
-    //   var av = where(a);
-    //   var bv = where(b);
-    //   return av - bv;
-    // });
+
     return champs;
   }
 
@@ -202,7 +411,7 @@ window.renderer = (function () {
   function renderChampionSelection(state) {
     if (state.current.appState.id === "select-champion") {
       prepareChampionSelectionBox(state);
-      $("#champion-select-frame").css("display", "block");
+      window.setTimeout(function () { $("#champion-select-frame").css("display", "block"); }, 1);
     } else {
       $("#champion-select-frame").css("display", "none");
     }
@@ -212,15 +421,24 @@ window.renderer = (function () {
     renderChampionSelection(state);
     renderChampionFrames('ally', state.current.allies);
     renderChampionFrames('enemy', state.current.enemies);
+    renderStrategyBars(state);
   }
 
+  this.clickStrategy = function (kind, strategyId) {
+    state.selectStrategy(kind, strategyId);
+    render(state);
+  };
+
   window.onload = function () {
+    strategyBarWidth = parseInt($('#ally-oo-strategy-bar').attr("width"));
+    allyStrategyBarLeft = parseInt($('#ally-oo-strategy-bar').attr("x"));
+    enemyStrategyBarRight = parseInt($('#enemy-oo-strategy-bar').attr("x")) + parseInt($('#enemy-oo-strategy-bar').attr("width"));
     document.onkeydown = function(evt) {
       evt = evt || window.event;
       var keyCode = evt.keyCode;
       if (keyCode === 8) { // backspace
         return false;
-       }
+      }
       return true;
     };
     prepareChampionSelectionBox(state);

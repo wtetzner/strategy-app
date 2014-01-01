@@ -39,6 +39,7 @@ var state = (function () {
       "gank-master":    { name: "Gank Master" },
       "snowball":       { name: "Snowball" }
     },
+    strategySelection: { ally: { strategy: null }, enemy: { strategy: null } },
     allyStrategies:  makeStrategies(this),
     enemyStrategies: makeStrategies(this),
     appState: { id: "normal" }
@@ -46,6 +47,7 @@ var state = (function () {
 
   this.current = empty;
 
+  this.strategies = strategies;
   this.champions = champions;
   this.championNameMaxSize = champions.map(function (champion) { return champion.name.length; })
     .reduce(function (previous, current) {
@@ -110,15 +112,27 @@ var state = (function () {
   };
 
   this.setChampionName = function(kind, position, championName) {
-    // var items = (kind === 'ally') ? this.current.allies : this.current.enemies;
-    // for (var i = 0; i < items.length; i++) {
-    //   if (items[i].kind.toLowerCase() === position.toLowerCase()) {
-    //     items[i].data.name = championName;
-    //   }
-    // }
     if (state.current.appState.id === "select-champion") {
       state.current.appState.championName = championName;
     }
+  };
+
+  function filterChampions(champions) {
+    return champions
+      .filter(function (champion) { return !champion.data.empty; })
+      .map(function (champion) { return champion.data; });
+  }
+
+  this.allyChampions = function() {
+    return filterChampions(this.current.allies);
+  };
+
+  this.enemyChampions = function() {
+    return filterChampions(this.current.enemies);
+  };
+
+  this.selectStrategy = function(kind, strategyId) {
+    this.current.strategySelection[kind] = { strategy: strategyId };
   };
 
   return this;
