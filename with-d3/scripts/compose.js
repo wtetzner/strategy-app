@@ -115,11 +115,14 @@ window.renderer = (function () {
       var darkBorder = "#252e40";
       var whiteBorder = "#FFFFFF";
 
+      var speed = 500;
+
       if (state.current.strategySelection.ally != null) {
         var list = scoreList(state.enemyChampions(), state.current.strategySelection.ally.strategy);
         d3.selectAll('.enemy-strategy-bar')
           .data(list)
           .transition()
+          .duration(speed)
           .attr("width", barWidth(5))
           .attr("fill", barColor)
           .attr("stroke", function (score) {
@@ -135,6 +138,7 @@ window.renderer = (function () {
         d3.selectAll('.enemy-strategy-text')
           .data(list)
           .transition()
+          .duration(speed)
           .attr("x", function (score) {
             return enemyStrategyBarRight - (strategyBarWidth - barWidth(5)(score)) - 4;
           })
@@ -145,6 +149,7 @@ window.renderer = (function () {
         d3.selectAll('.enemy-percent-text')
           .data(list)
           .transition()
+          .duration(speed)
           .text(function (score) {
             return score[1].value * 4;
           });
@@ -153,6 +158,7 @@ window.renderer = (function () {
         d3.selectAll('.enemy-strategy-bar')
           .data(list)
           .transition()
+          .duration(speed)
           .attr("width", strategyBarWidth)
           .attr("fill", barColor)
           .attr("onclick", function (score) {
@@ -165,6 +171,7 @@ window.renderer = (function () {
         d3.selectAll('.ally-strategy-bar')
           .data(list)
           .transition()
+          .duration(speed)
           .attr("width", barWidth(5))
           .attr("fill", barColor)
           .attr("stroke", function (score) {
@@ -183,6 +190,7 @@ window.renderer = (function () {
         d3.selectAll('.ally-strategy-text')
           .data(list)
           .transition()
+          .duration(speed)
           .attr("x", function (score) {
             return (strategyBarWidth + allyStrategyBarLeft) - barWidth(5)(score) + 4;
           })
@@ -193,6 +201,7 @@ window.renderer = (function () {
         d3.selectAll('.ally-percent-text')
           .data(list)
           .transition()
+          .duration(speed)
           .text(function (score) {
             return score[1].value * 4;
           });
@@ -201,6 +210,7 @@ window.renderer = (function () {
         d3.selectAll('.ally-strategy-bar')
           .data(list)
           .transition()
+          .duration(speed)
           .attr("width", strategyBarWidth)
           .attr("fill", barColor)
           .attr("x", allyStrategyBarLeft)
@@ -211,6 +221,7 @@ window.renderer = (function () {
         d3.selectAll('.ally-strategy-text')
           .data(list)
           .transition()
+          .duration(speed)
           .attr("x", function (score) {
             return (strategyBarWidth + allyStrategyBarLeft) - strategyBarWidth + 4;
           })
