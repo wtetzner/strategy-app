@@ -143,5 +143,15 @@ var state = (function () {
     }
   };
 
+  this.championAtPosition = function (kind, position) {
+    var champs = (kind === "ally") ? this.current.allies : this.current.enemies;
+    for (var i = 0; i < champs.length; i++) {
+      if (position.toLowerCase() === champs[i].kind.toLowerCase()) {
+        return champs[i].data;
+      }
+    }
+    return null;
+  };
+
   return this;
 })();
