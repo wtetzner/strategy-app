@@ -16,7 +16,7 @@ var state = (function () {
   ];
 
   this.empty = {
-    mode: modes[1],
+    mode: modes[0],
     allies: [
       { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Top" },
       { data: { empty: true, name: "", image: "images/unknown.png" }, kind: "Jungle" },
@@ -133,6 +133,14 @@ var state = (function () {
 
   this.selectStrategy = function(kind, strategyId) {
     this.current.strategySelection[kind] = { strategy: strategyId };
+  };
+
+  this.selectMode = function (modeName) {
+    for (var i = 0; i < modes.length; i++) {
+      if (modes[i].id === modeName) {
+        this.current.mode = modes[i];
+      }
+    }
   };
 
   return this;

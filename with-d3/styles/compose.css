@@ -1,6 +1,6 @@
 
 body {
-   background-color: #BBBBBB;
+   background-color: #666666;/* #BBBBBB; */
 }
 
 #left-champions {
@@ -52,5 +52,9 @@ body {
 
 .enemy-select {
    text-align: right;
+}
+
+#open-button:hover {
+   xlink:href: "images/hover-open-button.png";
 }
 

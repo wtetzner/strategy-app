@@ -1,6 +1,14 @@
 
 window.renderer = (function () {
 
+  var positions = {
+    A: "Top",
+    B: "Jungle",
+    C: "Mid",
+    D: "Carry",
+    E: "Support"
+  };
+
   var strategyNames = {
     oo: "Split Push",
     os: "Jungle Control",
@@ -299,8 +307,17 @@ window.renderer = (function () {
   };
 
   function filteredChampions() {
+    var kind = state.current.appState.kind;
+    var position = state.current.appState.position;
     function where(champion) {
       var textMatches = champion.name.toLowerCase().indexOf(state.current.appState.championName.toLowerCase()) !== -1;
+      if (state.current.mode.id === "strategy-recommendations") {
+        if (!((champion[state.current.strategySelection[kind].strategy] >= 4)
+              && (positions[champion.role1].toLowerCase() === position.toLowerCase()
+                  || (positions[champion.role2] || "").toLowerCase() === position.toLowerCase()))) {
+          return false;
+        }
+      }
       if (!textMatches) return false;
       if (state.current.appState.kind === 'ally') {
         return !state.isAlly(champion.name);
@@ -428,15 +445,35 @@ window.renderer = (function () {
     }
   }
 
+  function renderModeButtons(state) {
+    var mode = state.current.mode.id;
+    $('#open-button').attr("xlink:href", "images/open-button.png");
+    $('#rec-button').attr("xlink:href", "images/rec-button.png");
+    $('#counter-button').attr("xlink:href", "images/counter-button.png");
+    if (mode === "free-picks") {
+      $('#open-button').attr("xlink:href", "images/select-open-button.png");
+    } else if (mode === "strategy-recommendations") {
+      $('#rec-button').attr("xlink:href", "images/select-rec-button.png");
+    } else if (mode === "lane-counters") {
+      $('#counter-button').attr("xlink:href", "images/select-counter-button.png");
+    }
+  }
+
   function render(state) {
     renderChampionSelection(state);
     renderChampionFrames('ally', state.current.allies);
     renderChampionFrames('enemy', state.current.enemies);
     renderStrategyBars(state);
+    renderModeButtons(state);
   }
 
   this.clickStrategy = function (kind, strategyId) {
     state.selectStrategy(kind, strategyId);
+    render(state);
+  };
+
+  this.setMode = function (modeName) {
+    state.selectMode(modeName);
     render(state);
   };
 
