@@ -436,68 +436,91 @@
           </g>
           <rect x="265" y="185" width="750" height="400" stroke="#252e40" stroke-width="4" fill="url(#gradient44)" rx="10" ry="10"/>
           <g id="ally-strategy-bars">
-            <rect id="ally-oo-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="195" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-oo-bar)" />
-            <text id="ally-oo-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="225" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Split Push</text>
-            <text id="ally-oo-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="225" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="ally-oo-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="195" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'oo');" />
+            <g id="ally-oo-strategy-group" class="ally-strategy-group">
+              <rect id="ally-oo-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="195" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-oo-bar)" />
+              <text id="ally-oo-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="225" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Split Push</text>
+              <text id="ally-oo-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="225" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="ally-oo-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="195" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'oo');" />
+            </g>
 
-            <rect id="ally-os-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="247" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-os-bar)" />
-            <text id="ally-os-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="277" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Jungle Control</text>
-            <text id="ally-os-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="277" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="ally-os-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="247" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'os');" />
+            <g id="ally-os-strategy-group" class="ally-strategy-group">
+              <rect id="ally-os-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="247" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-os-bar)" />
+              <text id="ally-os-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="277" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Jungle Control</text>
+              <text id="ally-os-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="277" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="ally-os-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="247" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'os');" />
+            </g>
 
-            <rect id="ally-ss-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="299" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-ss-bar)" />
-            <text id="ally-ss-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="329" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Flex Strat</text>
-            <text id="ally-ss-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="329" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="ally-ss-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="299" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'ss');" />
+            <g id="ally-ss-strategy-group" class="ally-strategy-group">
+              <rect id="ally-ss-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="299" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-ss-bar)" />
+              <text id="ally-ss-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="329" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Flex Strat</text>
+              <text id="ally-ss-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="329" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="ally-ss-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="299" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'ss');" />
+            </g>
 
-            <rect id="ally-sh-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="351" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-sh-bar)" />
-            <text id="ally-sh-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="381" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Wombo Combo</text>
-            <text id="ally-sh-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="381" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="ally-sh-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="351" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'sh');" />
+            <g id="ally-sh-strategy-group" class="ally-strategy-group">
+              <rect id="ally-sh-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="351" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-sh-bar)" />
+              <text id="ally-sh-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="381" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Wombo Combo</text>
+              <text id="ally-sh-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="381" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="ally-sh-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="351" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'sh');" />
+            </g>
 
-            <rect id="ally-ho-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="403" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-ho-bar)" />
-            <text id="ally-ho-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="433" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Gank Master</text>
-            <text id="ally-ho-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="433" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="ally-ho-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="403" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'ho');" />
+            <g id="ally-ho-strategy-group" class="ally-strategy-group">
+              <rect id="ally-ho-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="403" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-ho-bar)" />
+              <text id="ally-ho-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="433" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Gank Master</text>
+              <text id="ally-ho-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="433" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="ally-ho-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="403" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'ho');" />
+            </g>
 
-            <rect id="ally-hh-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="455" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-hh-bar)" />
-            <text id="ally-hh-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="485" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Snowball</text>
-            <text id="ally-hh-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="485" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="ally-hh-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="455" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'hh');" />
-
+            <g id="ally-hh-strategy-group" class="ally-strategy-group">
+              <rect id="ally-hh-strategy-bar" class="ally-strategy-bar strategy-bar" x="277" y="455" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-hh-bar)" />
+              <text id="ally-hh-strategy-text" class="ally-strategy-text" x="281" width="355" text-anchor="start" y="485" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Snowball</text>
+              <text id="ally-hh-percent-text" class="ally-percent-text" x="628" width="355" text-anchor="end" y="485" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="ally-hh-strategy-bar-click" class="ally-strategy-bar-click" x="277" y="455" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('ally', 'hh');" />
+            </g>
           </g>
 
           <g id="enemy-strategy-bars">
-            <rect id="enemy-oo-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="195" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-oo-bar)" />
-            <text id="enemy-oo-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="225" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Split Push</text>
-            <text id="enemy-oo-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="225" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="enemy-oo-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="195" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'oo');" />
+            <g id="enemy-oo-strategy-group">
+              <rect id="enemy-oo-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="195" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-oo-bar)" />
+              <text id="enemy-oo-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="225" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Split Push</text>
+              <text id="enemy-oo-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="225" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="enemy-oo-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="195" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'oo');" />
+            </g>
 
-            <rect id="enemy-os-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="247" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-os-bar)" />
-            <text id="enemy-os-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="277" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Jungle Control</text>
-            <text id="enemy-os-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="277" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="enemy-os-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="247" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'os');" />
+            <g id="enemy-os-strategy-group" class="enemy-strategy-group">
+              <rect id="enemy-os-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="247" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-os-bar)" />
+              <text id="enemy-os-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="277" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Jungle Control</text>
+              <text id="enemy-os-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="277" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="enemy-os-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="247" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'os');" />
+            </g>
 
-            <rect id="enemy-ss-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="299" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-ss-bar)" />
-            <text id="enemy-ss-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="329" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Flex Strat</text>
-            <text id="enemy-ss-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="329" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="enemy-ss-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="299" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'ss');" />
+            <g id="enemy-ss-strategy-group" class="enemy-strategy-group">
+              <rect id="enemy-ss-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="299" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-ss-bar)" />
+              <text id="enemy-ss-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="329" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Flex Strat</text>
+              <text id="enemy-ss-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="329" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="enemy-ss-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="299" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'ss');" />
+            </g>
 
-            <rect id="enemy-sh-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="351" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-sh-bar)" />
-            <text id="enemy-sh-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="381" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Wombo Combo</text>
-            <text id="enemy-sh-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="381" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="enemy-sh-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="351" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'sh');" />
+            <g id="enemy-sh-strategy-group" class="enemy-strategy-group">
+              <rect id="enemy-sh-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="351" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-sh-bar)" />
+              <text id="enemy-sh-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="381" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Wombo Combo</text>
+              <text id="enemy-sh-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="381" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="enemy-sh-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="351" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'sh');" />
+            </g>
 
-            <rect id="enemy-ho-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="403" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-ho-bar)" onclick="renderer.clickStrategy('enemy', 'ho');" />
-            <text id="enemy-ho-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="433" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Gank Master</text>
-            <text id="enemy-ho-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="433" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="enemy-ho-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="403" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'ho');" />
+            <g id="enemy-ho-strategy-group" class="enemy-strategy-group">
+              <rect id="enemy-ho-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="403" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-ho-bar)" onclick="renderer.clickStrategy('enemy', 'ho');" />
+              <text id="enemy-ho-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="433" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Gank Master</text>
+              <text id="enemy-ho-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="433" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="enemy-ho-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="403" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'ho');" />
+            </g>
 
-            <rect id="enemy-hh-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="455" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-hh-bar)" />
-            <text id="enemy-hh-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="485" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Snowball</text>
-            <text id="enemy-hh-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="485" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
-            <rect id="enemy-hh-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="455" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'hh');" />
+            <g id="enemy-hh-strategy-group" class="enemy-strategy-group">
+              <rect id="enemy-hh-strategy-bar" class="enemy-strategy-bar strategy-bar" x="648" y="455" width="355" height="42" stroke-width="4" stroke="#252e40" rx="5" ry="5" fill="url(#gradient-hh-bar)" />
+              <text id="enemy-hh-strategy-text" class="enemy-strategy-text" x="999" width="355" text-anchor="end" y="485" fill="#ffffff" style="font-weight: bold; font-size: 20px;">Snowball</text>
+              <text id="enemy-hh-percent-text" class="enemy-percent-text" x="652" width="355" text-anchor="start" y="485" fill="#ffffff" style="font-weight: bold; font-size: 20px;">100</text>
+              <rect id="enemy-hh-strategy-bar-click" class="enemy-strategy-bar-click" x="648" y="455" width="355" height="42" fill-opacity="0" onclick="renderer.clickStrategy('enemy', 'hh');" />
+            </g>
           </g>
           <rect id="left-info-box" x="332" y="513" width="300" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient45)"/>
           <rect id="right-info-box" x="648" y="513" width="300" height="64" stroke="#252e40" stroke-width="2" fill="url(#gradient46)"/>

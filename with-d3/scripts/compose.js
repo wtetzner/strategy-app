@@ -62,6 +62,14 @@ window.renderer = (function () {
     return array;
   }
 
+  function sortBarGroups(kind, scores) {
+    var parent = $('#' + kind + '-strategy-bars');
+    var ys = $('.' + kind + '-strategy-group').find('.' + kind + '-strategy-bar').get().map(function (node) {
+      return parseInt(node.getAttribute("y"));
+    });
+    console.log(ys);
+  }
+
   function renderStrategyBars(state) {
     function emptyScores() {
       return { oo: 0, os: 0, ss: 0, sh: 0, ho: 0, hh: 0 };
@@ -127,6 +135,7 @@ window.renderer = (function () {
 
       if (state.current.strategySelection.ally != null) {
         var list = scoreList(state.enemyChampions(), state.current.strategySelection.ally.strategy);
+        sortBarGroups('enemy', list);
         d3.selectAll('.enemy-strategy-bar')
           .data(list)
           .transition()
