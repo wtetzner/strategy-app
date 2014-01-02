@@ -27,6 +27,7 @@ window.renderer = (function () {
     hh: "url(#gradient-hh-bar)"
   };
 
+  var bar_ys = {ally: [], enemy: []};
   var strategyBarWidth = 0;
   var minStrategyBarWidth = 155;
   var allyStrategyBarLeft = 0;
@@ -62,12 +63,34 @@ window.renderer = (function () {
     return array;
   }
 
+  function compareBarGroups(a,b) {
+
+  }
+
   function sortBarGroups(kind, scores) {
+    var order = {};
+    for (var i = 0; i < scores.length; i++) {
+      order[scores[i][0]] = i;
+    }
+
     var parent = $('#' + kind + '-strategy-bars');
-    var ys = $('.' + kind + '-strategy-group').find('.' + kind + '-strategy-bar').get().map(function (node) {
-      return parseInt(node.getAttribute("y"));
+    var capture = /^[^-]+-([^-]{2})-strategy-group$/;
+    var items = parent.children('.' + kind + '-strategy-group').sort(function(a, b) {
+      var strata = capture.exec($(a).attr("id"))[1];
+      var stratb = capture.exec($(b).attr("id"))[1];
+      var vA = order[strata];
+      var vB = order[stratb];
+      return vA - vB;
     });
-    console.log(ys);
+    parent.append(items);
+
+    d3.selectAll('.' + kind + '-strategy-group')
+      .data(bar_ys[kind])
+      .transition()
+      .duration(500)
+      .attr("transform", function (y) {
+        return 'translate(0, ' + y + ')';
+      });
   }
 
   function renderStrategyBars(state) {
@@ -108,7 +131,7 @@ window.renderer = (function () {
       for (var key in champScores) {
         data[key] = { value: champScores[key], strategyValue: 6 - staticScores[key] };
       }
-      var results = asAList(data);
+      var results = asAList(data).reverse();
       sortBy(results, function (data) {
         return data[1].value;
       });
@@ -180,6 +203,7 @@ window.renderer = (function () {
           });
       } else {
         var list = scoreList(state.enemyChampions(), state.current.strategySelection.ally.strategy);
+        sortBarGroups('enemy', list);
         d3.selectAll('.enemy-strategy-bar')
           .data(list)
           .transition()
@@ -198,6 +222,7 @@ window.renderer = (function () {
 
       if (state.current.strategySelection.enemy != null) {
         var list = scoreList(state.allyChampions(), state.current.strategySelection.enemy.strategy);
+        sortBarGroups('ally', list);
         d3.selectAll('.ally-strategy-bar')
           .data(list)
           .transition()
@@ -242,6 +267,7 @@ window.renderer = (function () {
           });
       } else {
         var list = scoreList(state.allyChampions(), state.current.strategySelection.enemy.strategy);
+        sortBarGroups('ally', list);
         d3.selectAll('.ally-strategy-bar')
           .data(list)
           .transition()
@@ -540,6 +566,13 @@ window.renderer = (function () {
   };
 
   window.onload = function () {
+    var capture_ypos = /^translate\(\d+,(\d+)\)$/;
+    bar_ys['ally'] = $('.ally-strategy-group').get().map(function (node) {
+      return parseInt(capture_ypos.exec($(node).attr("transform"))[1]);
+    });
+    bar_ys['enemy'] = $('.enemy-strategy-group').get().map(function (node) {
+      return parseInt(capture_ypos.exec($(node).attr("transform"))[1]);
+    });
     strategyBarWidth = parseInt($('#ally-oo-strategy-bar').attr("width"));
     allyStrategyBarLeft = parseInt($('#ally-oo-strategy-bar').attr("x"));
     enemyStrategyBarRight = parseInt($('#enemy-oo-strategy-bar').attr("x")) + parseInt($('#enemy-oo-strategy-bar').attr("width"));
