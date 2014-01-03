@@ -1,5 +1,12 @@
 
 window.renderer = (function () {
+  function preloadImages() {
+    for (var i = 0; i < state.champions.length; i++) {
+      var img = new Image();
+      img.src = state.champions[i].image;
+    }
+  }
+  preloadImages();
 
   var positions = {
     A: "Top",
@@ -32,11 +39,6 @@ window.renderer = (function () {
   var minStrategyBarWidth = 155;
   var allyStrategyBarLeft = 0;
   var enemyStrategyBarRight = 0;
-
-  state.champions.map(function (champion) {
-    var img = new Image();
-    img.src = champion.image;
-  });
 
   function asAList(obj) {
     var array = [];
@@ -409,6 +411,7 @@ window.renderer = (function () {
   }
 
   function filteredChampions() {
+    state.current.appState.championName = state.current.appState.championName || "";
     var kind = state.current.appState.kind;
     var position = state.current.appState.position;
     function where(champion) {
@@ -425,11 +428,11 @@ window.renderer = (function () {
     }
 
     var champs = state.champions.filter(function (champion) {
-      if (state.current.appState.id === "select-champion") {
+      // if (state.current.appState.id === "select-champion") {
         if (where(champion)) {
           return true;
         }
-      }
+      // }
       return false;
     });
     champs.sort(function (a, b) {
@@ -497,7 +500,6 @@ window.renderer = (function () {
       } else if (state.current.appState.id === "normal") {
         // alert(e.which);
         if (e.which === 13) {
-          console.log(state.current.selectedChampionBox.kind + ',' + state.current.selectedChampionBox.position);
           window.setTimeout(function () { openSelection(state.current.selectedChampionBox.kind, state.current.selectedChampionBox.position); }, 1);
         } else if (e.which === 39 || e.which === 68) { // right
           state.current.selectedChampionBox.kind = 'enemy';
@@ -521,7 +523,6 @@ window.renderer = (function () {
 
   this.openSelection = function (kind, position) {
     if (state.current.appState.id !== "select-champion") {
-      console.log('asdf: ' + kind + ',' + position);
       state.current.selectedChampionBox = { kind: kind, position: position };
       var championName = $('.' + kind + '-name-' + position.toLowerCase()).text();
       state.current.appState = {
@@ -557,7 +558,7 @@ window.renderer = (function () {
       .attr("height", 64)
       .attr("xlink:href", function (champion) { return champion.image; })
       .on("click", function (champion) {
-        selectChampion(state.current.appState.kind, state.current.appState.position, champion.name);
+        selectChampion(state.current.selectedChampionBox.kind, state.current.selectedChampionBox.position, champion.name);
       });
 
     d3.select("#champion-select-frame").selectAll("image")
@@ -612,6 +613,13 @@ window.renderer = (function () {
   };
 
   window.onload = function () {
+    var imgs = ["images/select-open-button.png", "images/rec-button.png", "images/counter-button.png",
+                "images/open-button.png", "images/select-rec-button.png", "images/select-counter-button.png"];
+    for (var i = 0; i < imgs.length; i++) {
+      var img = new Image();
+      img.src = imgs[i];
+    }
+
     var capture_ypos = /^translate\(\d+,(\d+)\)$/;
     bar_ys['ally'] = $('.ally-strategy-group').get().map(function (node) {
       return parseInt(capture_ypos.exec($(node).attr("transform"))[1]);
@@ -633,6 +641,11 @@ window.renderer = (function () {
     prepareChampionSelectionBox(state);
     prepareSelectionClicks();
     render(state);
+
+    window.setTimeout(function () {
+      prepareChampionSelectionBox(state);
+      // preloadImages();
+    }, 1000);
   };
 
   return this;

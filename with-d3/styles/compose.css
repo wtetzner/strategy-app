@@ -24,7 +24,6 @@ body {
 }
 
 #strategy-box {
-   align: center;
    border: 1px solid black;
 }
 
@@ -57,7 +56,4 @@ body {
    text-align: right;
 }
 
-#open-button:hover {
-   xlink:href: "images/hover-open-button.png";
-}
 
