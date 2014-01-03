@@ -491,17 +491,17 @@ window.renderer = (function () {
         if (e.which === 13) {
           console.log(state.current.selectedChampionBox.kind + ',' + state.current.selectedChampionBox.position);
           window.setTimeout(function () { openSelection(state.current.selectedChampionBox.kind, state.current.selectedChampionBox.position); }, 1);
-        } else if (e.which === 39) { // right
+        } else if (e.which === 39 || e.which === 68) { // right
           state.current.selectedChampionBox.kind = 'enemy';
           render(state);
-        } else if (e.which === 37) { // left
+        } else if (e.which === 37 || e.which === 65) { // left
           state.current.selectedChampionBox.kind = 'ally';
           render(state);
-        } else if (e.which === 38) { // up
+        } else if (e.which === 38 || e.which === 87) { // up
           state.moveUp();
           render(state);
           return false;
-        } else if (e.which === 40) { // down
+        } else if (e.which === 40 || e.which === 83) { // down
           state.moveDown();
           render(state);
           return false;
