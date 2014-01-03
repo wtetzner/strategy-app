@@ -351,8 +351,8 @@ window.renderer = (function () {
           if (champion.data.empty) {
             return normalBorder;
           }
-          if (!championOK(champion, kind, champion.kind)) {
-            return normalBorder;//"#FF0000";
+          if (!championOK(champion.data, kind, champion.kind)) {
+            return "#FF0000";
           }
           return normalBorder;
         });
