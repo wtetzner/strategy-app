@@ -353,7 +353,7 @@ window.renderer = (function () {
     d3.selectAll('.' + kind + '-frame')
       .data(champions)
       .transition()
-      .duration(500)
+      .duration(250)
       .attr("stroke", function (champion) {
         if (kind === 'ally' && !championOK(champion.data, kind, champion.kind) && !champion.data.empty) {
           if (selected(kind, champion.kind)) {
@@ -498,9 +498,13 @@ window.renderer = (function () {
           state.current.selectedChampionBox.kind = 'ally';
           render(state);
         } else if (e.which === 38) { // up
-
+          state.moveUp();
+          render(state);
+          return false;
         } else if (e.which === 40) { // down
-
+          state.moveDown();
+          render(state);
+          return false;
         }
       }
       return true;

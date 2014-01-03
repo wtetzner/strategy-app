@@ -154,5 +154,35 @@ var state = (function () {
     return null;
   };
 
+  this.moveDown = function () {
+    var kind = this.current.selectedChampionBox.kind;
+    var position = this.current.selectedChampionBox.position;
+    var champions = (kind === "ally") ? this.current.allies : this.current.enemies;
+    var index = 0;
+    for (var i = 0; i < champions.length; i++) {
+      if (champions[i].kind.toLowerCase() === position.toLowerCase()) {
+        index = i;
+      }
+    }
+    if (index < 4) {
+      this.current.selectedChampionBox.position = champions[index + 1].kind;
+    }
+  };
+
+  this.moveUp = function () {
+    var kind = this.current.selectedChampionBox.kind;
+    var position = this.current.selectedChampionBox.position;
+    var champions = (kind === "ally") ? this.current.allies : this.current.enemies;
+    var index = 0;
+    for (var i = 0; i < champions.length; i++) {
+      if (champions[i].kind.toLowerCase() === position.toLowerCase()) {
+        index = i;
+      }
+    }
+    if (index > 0) {
+      this.current.selectedChampionBox.position = champions[index - 1].kind;
+    }
+  };
+
   return this;
 })();
