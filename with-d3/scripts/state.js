@@ -42,7 +42,8 @@ var state = (function () {
     strategySelection: { ally: { strategy: null }, enemy: { strategy: null } },
     allyStrategies:  makeStrategies(this),
     enemyStrategies: makeStrategies(this),
-    appState: { id: "normal" }
+    appState: { id: "normal" },
+    selectedChampionBox: { kind: 'ally', position: 'Top' }
   };
 
   this.current = empty;

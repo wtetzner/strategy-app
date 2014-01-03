@@ -341,22 +341,32 @@ window.renderer = (function () {
         return champion.data.image;
       });
 
-    if (kind === "ally") {
-      var normalBorder = "#301740";
+    function selected(kind, position) {
+      if (state.current.selectedChampionBox.kind === kind
+          && state.current.selectedChampionBox.position.toLowerCase() === position.toLowerCase()) {
+        return true;
+      }
+      return false;
+    }
 
-      d3.selectAll('.' + kind + '-frame')
-        .data(champions)
-        .transition()
-        .attr("stroke", function (champion) {
-          if (champion.data.empty) {
-            return normalBorder;
-          }
-          if (!championOK(champion.data, kind, champion.kind)) {
+    var normalBorder = "#301740";
+    d3.selectAll('.' + kind + '-frame')
+      .data(champions)
+      .transition()
+      .duration(500)
+      .attr("stroke", function (champion) {
+        if (kind === 'ally' && !championOK(champion.data, kind, champion.kind) && !champion.data.empty) {
+          if (selected(kind, champion.kind)) {
+            return "#FFBBBB";
+          } else {
             return "#FF0000";
           }
-          return normalBorder;
-        });
-    }
+        }
+        if (selected(kind, champion.kind)) {
+          return "#FFFFFF";
+        }
+        return normalBorder;
+      });
 
     var select_input = "." + kind + "-champion-name";
     d3.selectAll(select_input).data(champions)
@@ -426,8 +436,81 @@ window.renderer = (function () {
     return champs;
   }
 
+  function prepareSelectionClicks() {
+    function removeLast(kind, position) {
+      var textfield = $('.' + kind + '-name-' + position.toLowerCase());
+      var text = textfield.text();
+      if (text.length >= 1) {
+        textfield.text(text.substr(0, text.length - 1));
+      } else {
+        textfield.text("");
+      }
+      textfield.text(textfield.text());
+      state.setChampionName(kind, position, textfield.text());
+      render(state);
+      return false;
+    }
+
+    $('body').off('keypress').on('keypress', function (e) {
+      var kind = state.current.selectedChampionBox.kind;
+      var position = state.current.selectedChampionBox.position;
+      if (state.current.appState.id === "select-champion") {
+        if (e.which === 8) {
+          return removeLast(kind, position) || false;
+        }
+        if ($('.' + kind + '-name-' + position.toLowerCase()).text().length < state.championNameMaxSize) {
+          var code = e.which || e.keyCode;
+          var chr = String.fromCharCode(code);
+          var textfield = $('.' + kind + '-name-' + position.toLowerCase());
+          textfield.text(textfield.text() + chr);
+          state.setChampionName(kind, position, textfield.text());
+          render(state);
+        }
+      }
+      return true;
+    });
+
+    $('body').off('keydown').on('keydown', function (e) {
+      var kind = state.current.selectedChampionBox.kind;
+      var position = state.current.selectedChampionBox.position;
+      if (state.current.appState.id === "select-champion") {
+        if (e.which === 8) {
+          return removeLast(kind, position) || false;
+        } else if (e.which === 13) {
+          if (state.current.appState.champions.length > 0) {
+            selectChampion(state.current.appState.kind, state.current.appState.position, state.current.appState.champions[0].name);
+            return true;
+          }
+        } else if (e.which === 27) {
+          state.current.appState = { id: "normal" };
+          render(state);
+          return true;
+        }
+      } else if (state.current.appState.id === "normal") {
+        // alert(e.which);
+        if (e.which === 13) {
+          console.log(state.current.selectedChampionBox.kind + ',' + state.current.selectedChampionBox.position);
+          window.setTimeout(function () { openSelection(state.current.selectedChampionBox.kind, state.current.selectedChampionBox.position); }, 1);
+        } else if (e.which === 39) { // right
+          state.current.selectedChampionBox.kind = 'enemy';
+          render(state);
+        } else if (e.which === 37) { // left
+          state.current.selectedChampionBox.kind = 'ally';
+          render(state);
+        } else if (e.which === 38) { // up
+
+        } else if (e.which === 40) { // down
+
+        }
+      }
+      return true;
+    });
+  }
+
   this.openSelection = function (kind, position) {
     if (state.current.appState.id !== "select-champion") {
+      console.log('asdf: ' + kind + ',' + position);
+      state.current.selectedChampionBox = { kind: kind, position: position };
       var championName = $('.' + kind + '-name-' + position.toLowerCase()).text();
       state.current.appState = {
         id: "select-champion",
@@ -436,55 +519,6 @@ window.renderer = (function () {
         championName: "",//championName,
         champions: []
       };
-
-      function removeLast() {
-        var textfield = $('.' + kind + '-name-' + position.toLowerCase());
-        var text = textfield.text();
-        if (text.length >= 1) {
-          textfield.text(text.substr(0, text.length - 1));
-        } else {
-          textfield.text("");
-        }
-        textfield.text(textfield.text());
-        state.setChampionName(kind, position, textfield.text());
-        render(state);
-        return false;
-      }
-
-      $('body').off('keypress').on('keypress', function (e) {
-        if (state.current.appState.id === "select-champion") {
-          if (e.which === 8) {
-            return removeLast() || false;
-          }
-          if ($('.' + kind + '-name-' + position.toLowerCase()).text().length < state.championNameMaxSize) {
-            var code = e.which || e.keyCode;
-            var chr = String.fromCharCode(code);
-            var textfield = $('.' + kind + '-name-' + position.toLowerCase());
-            textfield.text(textfield.text() + chr);
-            state.setChampionName(kind, position, textfield.text());
-            render(state);
-          }
-        }
-        return true;
-      });
-
-      $('body').off('keydown').on('keydown', function (e) {
-        if (state.current.appState.id === "select-champion") {
-          if (e.which === 8) {
-            return removeLast() || false;
-          } else if (e.which === 13) {
-            if (state.current.appState.champions.length > 0) {
-              selectChampion(state.current.appState.kind, state.current.appState.position, state.current.appState.champions[0].name);
-              return true;
-            }
-          } else if (e.which === 27) {
-            state.current.appState = { id: "normal" };
-            render(state);
-            return true;
-          }
-        }
-        return true;
-      });
     }
     render(state);
   };
@@ -579,12 +613,13 @@ window.renderer = (function () {
     document.onkeydown = function(evt) {
       evt = evt || window.event;
       var keyCode = evt.keyCode;
-          if (keyCode === 8) { // backspace
-            return false;
-          }
+      if (keyCode === 8) { // backspace
+        return false;
+      }
       return true;
     };
     prepareChampionSelectionBox(state);
+    prepareSelectionClicks();
     render(state);
   };
 
