@@ -432,7 +432,15 @@ window.renderer = (function () {
       }
       return false;
     });
-
+    champs.sort(function (a, b) {
+      var index_a = a.name.toLowerCase().indexOf(state.current.appState.championName.toLowerCase());
+      var index_b = b.name.toLowerCase().indexOf(state.current.appState.championName.toLowerCase());
+      if (index_a === index_b) {
+        return a.length - b.length;
+      } else {
+        return index_a - index_b;
+      }
+    });
     return champs;
   }
 
